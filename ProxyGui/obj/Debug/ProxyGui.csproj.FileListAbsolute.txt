@@ -1,0 +1,11 @@
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\bin\Debug\ProxyGui.exe.config
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\bin\Debug\ProxyGui.exe
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\bin\Debug\ProxyGui.pdb
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\bin\Debug\ProxyLib.dll
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\obj\Debug\ProxyGui.csprojResolveAssemblyReference.cache
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\obj\Debug\ProxyGui.Form1.resources
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\obj\Debug\ProxyGui.Properties.Resources.resources
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\obj\Debug\ProxyGui.csproj.GenerateResource.Cache
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\obj\Debug\ProxyGui.exe
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\obj\Debug\ProxyGui.pdb
+\\occ\utcr\studenthome\rhys.puddephatt\documents\visual studio 2013\Projects\ProxyGui\ProxyGui\bin\Debug\ProxyLib.pdb
