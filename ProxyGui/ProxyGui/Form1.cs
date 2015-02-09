@@ -22,7 +22,7 @@ namespace ProxyGui
             string path = "ProxyLib.dll";
             if (!File.Exists(path))
                 System.IO.File.WriteAllBytes(path, ProxyGui.Properties.Resources.ProxyLib);
-            this.Text = "Disconected";
+            this.Text = "Disconnected";
             this.TxtCientPort.Enabled = false;
             this.TxtHostPort.Enabled = false;
         }
@@ -38,13 +38,13 @@ namespace ProxyGui
                 _prox.setCientport(chkAdvanced.Checked? TxtCientPort.Text:"22").sethost(TxtHostName.Text).setpassword(TxtPassword.Text).setServerport(chkAdvanced.Checked?TxtHostPort.Text:"8080").setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
                 _prox.SessionTerminated += _prox_SessionTerminated;
                 _prox.Start();
-                this.Text = "connecting";
+                this.Text = "Connecting";
                 button1.Text = "Stop";
             }
             else if (((Button)sender).Text == "Stop")
             {
                 button1.Text = "Closing";
-                this.Text = "Disconecting";
+                this.Text = "Disconnecting";
                 _prox.Stop();
                 
             }
@@ -53,12 +53,12 @@ namespace ProxyGui
         void _prox_SessionStarted(object source, ProxyInfo e)
         {
             
-            SetControlPropertyThreadSafe(this, "Text", "Conected");
+            SetControlPropertyThreadSafe(this, "Text", "Connected");
         }
 
         void _prox_SessionTerminated(object source, ProxyInfo e)
         {
-            SetControlPropertyThreadSafe(this, "Text", "Disconected");
+            SetControlPropertyThreadSafe(this, "Text", "Disconnected");
             SetControlPropertyThreadSafe(button1, "Text", "Start");
         }
 
@@ -94,7 +94,7 @@ namespace ProxyGui
             if (button1.Text == "Stop")
             {
                 button1.Text = "Closing";
-                this.Text = "Disconecting";
+                this.Text = "Disconnecting";
                 _prox.Stop();
 
             }
