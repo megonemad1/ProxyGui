@@ -119,7 +119,7 @@ namespace ProxyLib
             if (host + Serverport + username + password == "")
                 return;
             closed = false;
-            Console.WriteLine("changing lan proxy");
+            Console.WriteLine("Changing LAN Proxy...");
             ChangeLanProxySettings(1, String.Format("socks=LOCALHOST:{0}", Cientport));
 
             OpenSshConection();
@@ -178,22 +178,22 @@ namespace ProxyLib
             }
 
             _open = false;
-            Console.WriteLine("closing ssh");
+            Console.WriteLine("Closing SSH...");
             ChangeLanProxySettings(0, (this.OldSettings == null) ? "" : OldSettings);
-            Console.WriteLine("Returned lan proxy");
+            Console.WriteLine("Returned LAN Proxy");
             SessionTerminated(this, new ProxyInfo(String.Format("{0}, {1}, {2}, {3}", host, Serverport, this.Cientport, this.username)));
 
         }
 
         void Proxy_SessionStarted(object source, ProxyInfo e)
         {
-            Console.WriteLine("starting ssh");
+            Console.WriteLine("Starting SSH...");
             _open = true;
         }
 
         void Proxy_SessionTerminated(object source, ProxyInfo e)
         {
-            Console.WriteLine("closed ssh");
+            Console.WriteLine("Closed SSH...");
             closed = true;
         }
 

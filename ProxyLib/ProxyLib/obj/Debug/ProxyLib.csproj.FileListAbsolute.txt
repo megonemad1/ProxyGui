@@ -12,3 +12,10 @@ C:\Users\rhys.puddephatt\Dropbox\Computing\btech\unit 14\ProxyGui\ProxyLib\Proxy
 C:\Users\rhys.puddephatt\Dropbox\Computing\btech\unit 14\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csproj.GenerateResource.Cache
 C:\Users\rhys.puddephatt\Dropbox\Computing\btech\unit 14\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.dll
 C:\Users\rhys.puddephatt\Dropbox\Computing\btech\unit 14\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.pdb
+D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\bin\Debug\ProxyLib.dll
+D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\bin\Debug\ProxyLib.pdb
+D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csprojResolveAssemblyReference.cache
+D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.Properties.Resources.resources
+D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csproj.GenerateResource.Cache
+D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.dll
+D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.pdb
