@@ -29,13 +29,13 @@ namespace ProxyGui
 
         private void BtnStartStop_Click(object sender, EventArgs e)
         {
-            
-            if (((Button)sender).Text=="Start")
-            {   
+
+            if (((Button)sender).Text == "Start")
+            {
                 _prox = new Proxy();
                 _prox.SessionStarted += _prox_SessionStarted;
-                _prox.SessionTerminated+=_prox_SessionTerminated;
-                _prox.setCientport(chkAdvanced.Checked? TxtCientPort.Text:"22").sethost(TxtHostName.Text).setpassword(TxtPassword.Text).setServerport(chkAdvanced.Checked?TxtHostPort.Text:"8080").setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
+                _prox.SessionTerminated += _prox_SessionTerminated;
+                _prox.setCientport(chkAdvanced.Checked ? TxtCientPort.Text : "22").sethost(TxtHostName.Text).setpassword(TxtPassword.Text).setServerport(chkAdvanced.Checked ? TxtHostPort.Text : "8080").setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
                 _prox.SessionTerminated += _prox_SessionTerminated;
                 _prox.Start();
                 this.Text = "Connecting";
@@ -46,13 +46,13 @@ namespace ProxyGui
                 button1.Text = "Closing";
                 this.Text = "Disconnecting";
                 _prox.Stop();
-                
+
             }
         }
 
         void _prox_SessionStarted(object source, ProxyInfo e)
         {
-            
+
             SetControlPropertyThreadSafe(this, "Text", "Connected");
         }
 
@@ -64,9 +64,9 @@ namespace ProxyGui
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            
-            if (e.KeyCode==Keys.Enter)
-            BtnStartStop_Click(button1, new EventArgs());
+
+            if (e.KeyCode == Keys.Enter)
+                BtnStartStop_Click(button1, new EventArgs());
         }
 
         private delegate void SetControlPropertyThreadSafeDelegate(Control control, string propertyName, object propertyValue);
@@ -98,6 +98,52 @@ namespace ProxyGui
                 _prox.Stop();
 
             }
+
+
+            try
+            {
+                //saveshit
+                Properties.Settings.Default.Advanced = chkAdvanced.Checked;
+                Properties.Settings.Default.ClientPort = TxtCientPort.Text;
+                Properties.Settings.Default.Host = TxtHostName.Text;
+                Properties.Settings.Default.HostPort = TxtHostPort.Text;
+                Properties.Settings.Default.Username = TxtUserName.Text;
+                Properties.Settings.Default.Verbose = ChkVerbose.Checked;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+                Console.WriteLine("Failed to save settings...");
+            }
+            Console.WriteLine("Saved settings.");
+
+
+
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //Magic's save&load shit.
+            try
+            {
+                chkAdvanced.Checked = Properties.Settings.Default.Advanced;
+                ChkVerbose.Checked = Properties.Settings.Default.Verbose;
+                TxtCientPort.Text = Properties.Settings.Default.ClientPort;
+                TxtHostName.Text = Properties.Settings.Default.Host;
+                TxtHostPort.Text = Properties.Settings.Default.HostPort;
+                TxtUserName.Text = Properties.Settings.Default.Username;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+                Console.WriteLine("Failed to load settings...");
+            }
+            Console.WriteLine("Loaded settings.");
+
         }
     }
 }
