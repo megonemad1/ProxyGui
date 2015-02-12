@@ -109,7 +109,6 @@ namespace ProxyGui
             //    FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
             //   string version = fileVersionInfo.ProductVersion;
 
-            Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
 
             try
             {
@@ -158,6 +157,12 @@ namespace ProxyGui
             //program updatah
             // Process.Start("MagiCorpUpdater.exe","-p: ProxyGUI -v: 100 -s: http://magicorpltd.co.uk/updater");
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
+            this.Close();
         }
     }
 }
