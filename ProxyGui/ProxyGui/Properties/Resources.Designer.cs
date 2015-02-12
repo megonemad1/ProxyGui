@@ -73,6 +73,26 @@ namespace ProxyGui.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] klink {
+            get {
+                object obj = ResourceManager.GetObject("klink", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] MagiCorpUpdater {
+            get {
+                object obj = ResourceManager.GetObject("MagiCorpUpdater", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] ProxyLib {
             get {
                 object obj = ResourceManager.GetObject("ProxyLib", resourceCulture);

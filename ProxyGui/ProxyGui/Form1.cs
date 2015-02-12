@@ -10,18 +10,23 @@ using System.Windows.Forms;
 using ProxyLib;
 using System.IO;
 using System.Reflection;
+using System.Windows;
+using System.Diagnostics;
 
 namespace ProxyGui
 {
     public partial class Form1 : Form
     {
+        string version = "102"; //change me when you change something
         Proxy _prox;
         public Form1()
         {
             InitializeComponent();
-            string path = "ProxyLib.dll";
-            if (!File.Exists(path))
-                System.IO.File.WriteAllBytes(path, ProxyGui.Properties.Resources.ProxyLib);
+            //   string path = "ProxyLib.dll";
+            if (!File.Exists("ProxyLib.dll"))
+                System.IO.File.WriteAllBytes("ProxyLib.dll", ProxyGui.Properties.Resources.ProxyLib);
+            if (!File.Exists("MagiCorpUpdater.exe"))
+                System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
             this.Text = "Disconnected";
             this.TxtCientPort.Enabled = false;
             this.TxtHostPort.Enabled = false;
@@ -99,6 +104,12 @@ namespace ProxyGui
 
             }
 
+            //program updatah
+            //    Assembly assembly = Assembly.GetExecutingAssembly();
+            //    FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            //   string version = fileVersionInfo.ProductVersion;
+
+            Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
 
             try
             {
@@ -143,6 +154,9 @@ namespace ProxyGui
                 Console.WriteLine("Failed to load settings...");
             }
             Console.WriteLine("Loaded settings.");
+
+            //program updatah
+            // Process.Start("MagiCorpUpdater.exe","-p: ProxyGUI -v: 100 -s: http://magicorpltd.co.uk/updater");
 
         }
     }
