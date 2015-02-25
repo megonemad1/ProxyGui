@@ -143,7 +143,7 @@
             // chkAdvanced
             // 
             this.chkAdvanced.AutoSize = true;
-            this.chkAdvanced.Location = new System.Drawing.Point(74, 137);
+            this.chkAdvanced.Location = new System.Drawing.Point(65, 137);
             this.chkAdvanced.Name = "chkAdvanced";
             this.chkAdvanced.Size = new System.Drawing.Size(15, 14);
             this.chkAdvanced.TabIndex = 11;
@@ -153,7 +153,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 137);
+            this.label6.Location = new System.Drawing.Point(3, 137);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 12;
@@ -179,7 +179,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(120, 153);
+            this.button2.Location = new System.Drawing.Point(120, 154);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(63, 23);
             this.button2.TabIndex = 15;

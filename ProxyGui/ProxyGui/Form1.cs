@@ -17,7 +17,7 @@ namespace ProxyGui
 {
     public partial class Form1 : Form
     {
-        string version = "102"; //change me when you change something
+        string version = "103"; //change me when you change something
         Proxy _prox;
         public Form1()
         {
