@@ -34,8 +34,11 @@ namespace ProxyGui
             {
                 _prox = new Proxy();
                 _prox.SessionStarted += _prox_SessionStarted;
-                _prox.SessionTerminated += _prox_SessionTerminated;
-                _prox.setCientport(chkAdvanced.Checked ? TxtCientPort.Text : "22").sethost(TxtHostName.Text).setpassword(TxtPassword.Text).setServerport(chkAdvanced.Checked ? TxtHostPort.Text : "8080").setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
+                if (chkAdvanced.Checked)
+                    _prox.setCientport(TxtCientPort.Text).setServerport(TxtHostPort.Text);
+                else
+                    _prox.setCientport("8080").setServerport("22");
+                _prox.TurnOffShell(ChkHideShell.Checked).AutoStoreSshkey(ChkSaveKey.Checked).setpassword(TxtPassword.Text).sethost(TxtHostName.Text).setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
                 _prox.SessionTerminated += _prox_SessionTerminated;
                 _prox.Start();
                 this.Text = "Connecting";
@@ -73,13 +76,20 @@ namespace ProxyGui
 
         public static void SetControlPropertyThreadSafe(Control control, string propertyName, object propertyValue)
         {
-            if (control.InvokeRequired)
+            try
             {
-                control.Invoke(new SetControlPropertyThreadSafeDelegate(SetControlPropertyThreadSafe), new object[] { control, propertyName, propertyValue });
+                if (control.InvokeRequired)
+                {
+                    control.Invoke(new SetControlPropertyThreadSafeDelegate(SetControlPropertyThreadSafe), new object[] { control, propertyName, propertyValue });
+                }
+                else
+                {
+                    control.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, control, new object[] { propertyValue });
+                }
             }
-            else
+            catch (System.ObjectDisposedException e)
             {
-                control.GetType().InvokeMember(propertyName, BindingFlags.SetProperty, null, control, new object[] { propertyValue });
+                Console.WriteLine(e);
             }
         }
 
@@ -105,6 +115,8 @@ namespace ProxyGui
                 //saveshit
                 Properties.Settings.Default.Advanced = chkAdvanced.Checked;
                 Properties.Settings.Default.ClientPort = TxtCientPort.Text;
+                Properties.Settings.Default.HiddenShell = ChkHideShell.Checked;
+                Properties.Settings.Default.SaveKey = ChkSaveKey.Checked;
                 Properties.Settings.Default.Host = TxtHostName.Text;
                 Properties.Settings.Default.HostPort = TxtHostPort.Text;
                 Properties.Settings.Default.Username = TxtUserName.Text;
@@ -131,6 +143,8 @@ namespace ProxyGui
             {
                 chkAdvanced.Checked = Properties.Settings.Default.Advanced;
                 ChkVerbose.Checked = Properties.Settings.Default.Verbose;
+                ChkSaveKey.Checked = Properties.Settings.Default.SaveKey;
+                ChkHideShell.Checked = Properties.Settings.Default.HiddenShell;
                 TxtCientPort.Text = Properties.Settings.Default.ClientPort;
                 TxtHostName.Text = Properties.Settings.Default.Host;
                 TxtHostPort.Text = Properties.Settings.Default.HostPort;
@@ -144,6 +158,12 @@ namespace ProxyGui
             }
             Console.WriteLine("Loaded settings.");
 
+        }
+
+        private void ChkHideShell_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!(sender as CheckBox).Checked)
+                TxtPassword.Text = "";
         }
     }
 }

@@ -26,6 +26,8 @@ namespace ProxyLib
         Thread Conn;
         Process Ssh;
         bool verbose;
+        bool auto_store_sshkey;
+        bool NoShell;
 
         bool _open;
         bool closed;
@@ -50,9 +52,29 @@ namespace ProxyLib
             password = "";
             closed = true;
             verbose = false;
+            NoShell = false;
+            auto_store_sshkey = false;
             this.SessionTerminated += Proxy_SessionTerminated;
             this.SessionStarted += Proxy_SessionStarted;
             Conn = new Thread(POpen);
+        }
+        /// <summary>
+        /// Hides The Shell
+        /// </summary>
+        /// <param name="h">weather the proxy shell should be hidden</param>
+        /// <returns>Amended object</returns>
+        public Proxy AutoStoreSshkey(bool h)
+        {
+            auto_store_sshkey = h; return this;
+        }
+        /// <summary>
+        /// Hides The Shell
+        /// </summary>
+        /// <param name="h">weather the proxy shell should be hidden</param>
+        /// <returns>Amended object</returns>
+        public Proxy TurnOffShell(bool h)
+        {
+            NoShell = h; return this;
         }
         /// <summary>
         /// Sets the Proxy into verbose mode
@@ -129,15 +151,15 @@ namespace ProxyLib
         private void ChangeLanProxySettings(int on, object proxsettings)
         {
             RegistryKey registry = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings", true);
-            if(on==1)
-            OldSettings = registry.GetValue("ProxyServer");
+            if (on == 1)
+                OldSettings = registry.GetValue("ProxyServer");
             registry.SetValue("ProxyEnable", on);//turn on off
             registry.SetValue("ProxyServer", proxsettings);//chane the settings
             // These lines implement the Interface in the beginning of program 
             // They cause the OS to refresh the settings, causing IP to realy update
             settingsReturn = InternetSetOption(IntPtr.Zero, INTERNET_OPTION_SETTINGS_CHANGED, IntPtr.Zero, 0);
             refreshReturn = InternetSetOption(IntPtr.Zero, INTERNET_OPTION_REFRESH, IntPtr.Zero, 0);
-           
+
         }
 
         private void OpenSshConection()
@@ -147,8 +169,9 @@ namespace ProxyLib
                 System.IO.File.WriteAllBytes(path, ProxyLib.Properties.Resources.klink);
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = path;
-            startInfo.Arguments = string.Format("-ssh -l {0} -pw {1} -D {2} {3} {4}", username, password, this.Cientport, host, (verbose) ? "-v" : "");
+            startInfo.Arguments = string.Format("-ssh -l {0} -pw {1} -D {2} -P {3} {4} {5} {6} {7}", username, password, this.Cientport, this.Serverport, (verbose) ? "-v" : "", (auto_store_sshkey) ? "-auto_store_sshkey" : "", (NoShell) ? "-N" : "", host);
             startInfo.UseShellExecute = false;
+            startInfo.CreateNoWindow = NoShell;
             Ssh = new Process();
             Ssh.StartInfo = startInfo;
             Ssh.EnableRaisingEvents = true;
@@ -215,8 +238,8 @@ namespace ProxyLib
             while (!closed) ;
 
         }
-       
-       
+
+
     }
     public delegate void Started(object source, ProxyInfo e);
     public delegate void Terminated(object source, ProxyInfo e);

@@ -19,3 +19,10 @@ D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.Properties.Res
 D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csproj.GenerateResource.Cache
 D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.dll
 D:\Downloads\ProxyGui-master\ProxyLib\ProxyLib\obj\Debug\ProxyLib.pdb
+C:\Users\rhys\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\bin\Debug\ProxyLib.dll
+C:\Users\rhys\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\bin\Debug\ProxyLib.pdb
+C:\Users\rhys\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csprojResolveAssemblyReference.cache
+C:\Users\rhys\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.Properties.Resources.resources
+C:\Users\rhys\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csproj.GenerateResource.Cache
+C:\Users\rhys\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.dll
+C:\Users\rhys\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.pdb
