@@ -37,7 +37,7 @@ namespace ProxyGui
     public partial class Form1 : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        string version = "108"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        string version = "109"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
 
         Proxy _prox;
@@ -50,15 +50,37 @@ namespace ProxyGui
             //     
             //        if (!File.Exists("MagiCorpUpdater.exe"))
             //            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
-       
+
             //parenting
             pictureBox1.Controls.Add(pictureBox2);
-            
+
 
             this.Text = "Disconnected";
             this.TxtCientPort.Enabled = false;
             this.TxtHostPort.Enabled = false;
 
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (FormWindowState.Minimized == this.WindowState)
+            {
+                TrayIcon.Visible = true;
+                TrayIcon.ShowBalloonTip(500);
+                this.Hide();
+                this.ShowInTaskbar = false;
+            }
+
+            else if (FormWindowState.Normal == this.WindowState)
+            {
+                this.ShowInTaskbar = true;
+            }
+        }
+
+        private void TrayIcon_MouseDoubleClick_1(object sender, MouseEventArgs e)
+        {
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void BtnStartStop_Click(object sender, EventArgs e)
@@ -179,44 +201,44 @@ namespace ProxyGui
 
             VersionLbl.Text = version;
             //Kai'sDemise
-        //    if (Environment.UserName.Contains("james"))
-            string[] NamesToTroll = new string[]{"james", "rhys"};
-             if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(NamesToTroll, StringSplitOptions.None).Length>1)
+            //    if (Environment.UserName.Contains("james"))
+            string[] NamesToTroll = new string[] { "james", "rhys" };
+            if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(NamesToTroll, StringSplitOptions.None).Length > 1)
             {
-        //        MessageBox.Show("HI KAI");
+                //        MessageBox.Show("HI KAI");
                 pictureBox2.Visible = true;
                 UsrModeLbl.Text = "Developer Mode";
             }
-             else if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(new string[]{"kai"}, StringSplitOptions.None).Length > 1)
-             {
-                 pictureBox2.Visible = true;
-                 pictureBox2.Image = Properties.Resources.kai_fun_stuff;
-                 UsrModeLbl.Text = "Debug Mode";
-             }
-             else
-             {
-                 UsrModeLbl.Text = "User Mode";
-             }
-             //MessageBox.Show(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+            else if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(new string[] { "kai" }, StringSplitOptions.None).Length > 1)
+            {
+                pictureBox2.Visible = true;
+                pictureBox2.Image = Properties.Resources.kai_fun_stuff;
+                UsrModeLbl.Text = "Debug Mode";
+            }
+            else
+            {
+                UsrModeLbl.Text = "User Mode";
+            }
+            //MessageBox.Show(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
             //make sure runtimes exist... placing them on EACH boot (fixing update only updating proxygui.exe)
             try
             {
 
-            
-            //     if (!File.Exists("ProxyLib.dll"))
-            //       {
-            System.IO.File.WriteAllBytes("ProxyLib.dll", ProxyGui.Properties.Resources.ProxyLib);
-            //       }
 
-            //       if (!File.Exists("MagiCorpUpdater.exe"))
-            //        {
-            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
-            //       }
+                //     if (!File.Exists("ProxyLib.dll"))
+                //       {
+                System.IO.File.WriteAllBytes("ProxyLib.dll", ProxyGui.Properties.Resources.ProxyLib);
+                //       }
 
-            //      if (!File.Exists("klink.exe"))
-            //      {
-            System.IO.File.WriteAllBytes("klink.exe", Properties.Resources.klink);
-            //      }
+                //       if (!File.Exists("MagiCorpUpdater.exe"))
+                //        {
+                System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
+                //       }
+
+                //      if (!File.Exists("klink.exe"))
+                //      {
+                System.IO.File.WriteAllBytes("klink.exe", Properties.Resources.klink);
+                //      }
             }
             catch (Exception xe)
             {
@@ -261,5 +283,9 @@ namespace ProxyGui
             Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
             this.Close();
         }
+
+     
+
+        
     }
 }

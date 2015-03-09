@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.TxtHostName = new System.Windows.Forms.TextBox();
             this.TxtCientPort = new System.Windows.Forms.TextBox();
@@ -53,6 +54,7 @@
             this.VersionLbl = new System.Windows.Forms.Label();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.UsrModeLbl = new System.Windows.Forms.Label();
+            this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -61,14 +63,14 @@
             // 
             this.TxtHostName.Location = new System.Drawing.Point(65, 113);
             this.TxtHostName.Name = "TxtHostName";
-            this.TxtHostName.Size = new System.Drawing.Size(118, 20);
+            this.TxtHostName.Size = new System.Drawing.Size(150, 20);
             this.TxtHostName.TabIndex = 0;
             // 
             // TxtCientPort
             // 
             this.TxtCientPort.Location = new System.Drawing.Point(65, 165);
             this.TxtCientPort.Name = "TxtCientPort";
-            this.TxtCientPort.Size = new System.Drawing.Size(118, 20);
+            this.TxtCientPort.Size = new System.Drawing.Size(150, 20);
             this.TxtCientPort.TabIndex = 2;
             this.TxtCientPort.Text = "8080";
             // 
@@ -76,7 +78,7 @@
             // 
             this.TxtHostPort.Location = new System.Drawing.Point(65, 139);
             this.TxtHostPort.Name = "TxtHostPort";
-            this.TxtHostPort.Size = new System.Drawing.Size(118, 20);
+            this.TxtHostPort.Size = new System.Drawing.Size(150, 20);
             this.TxtHostPort.TabIndex = 1;
             this.TxtHostPort.Text = "22";
             // 
@@ -120,7 +122,7 @@
             // 
             this.TxtUserName.Location = new System.Drawing.Point(65, 192);
             this.TxtUserName.Name = "TxtUserName";
-            this.TxtUserName.Size = new System.Drawing.Size(118, 20);
+            this.TxtUserName.Size = new System.Drawing.Size(150, 20);
             this.TxtUserName.TabIndex = 6;
             // 
             // label5
@@ -137,7 +139,7 @@
             this.TxtPassword.Location = new System.Drawing.Point(65, 218);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
-            this.TxtPassword.Size = new System.Drawing.Size(118, 20);
+            this.TxtPassword.Size = new System.Drawing.Size(150, 20);
             this.TxtPassword.TabIndex = 8;
             // 
             // button1
@@ -172,7 +174,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(107, 244);
+            this.label7.Location = new System.Drawing.Point(137, 244);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 13;
@@ -181,7 +183,7 @@
             // ChkVerbose
             // 
             this.ChkVerbose.AutoSize = true;
-            this.ChkVerbose.Location = new System.Drawing.Point(168, 244);
+            this.ChkVerbose.Location = new System.Drawing.Point(198, 244);
             this.ChkVerbose.Name = "ChkVerbose";
             this.ChkVerbose.Size = new System.Drawing.Size(15, 14);
             this.ChkVerbose.TabIndex = 14;
@@ -190,7 +192,7 @@
             // ChkHideShell
             // 
             this.ChkHideShell.AutoSize = true;
-            this.ChkHideShell.Location = new System.Drawing.Point(168, 262);
+            this.ChkHideShell.Location = new System.Drawing.Point(198, 262);
             this.ChkHideShell.Name = "ChkHideShell";
             this.ChkHideShell.Size = new System.Drawing.Size(15, 14);
             this.ChkHideShell.TabIndex = 18;
@@ -200,7 +202,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(107, 262);
+            this.label8.Location = new System.Drawing.Point(137, 262);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
             this.label8.TabIndex = 17;
@@ -228,7 +230,7 @@
             // 
             this.BtnUpdate.Location = new System.Drawing.Point(128, 279);
             this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(55, 23);
+            this.BtnUpdate.Size = new System.Drawing.Size(87, 23);
             this.BtnUpdate.TabIndex = 19;
             this.BtnUpdate.Text = "Update";
             this.BtnUpdate.UseVisualStyleBackColor = true;
@@ -240,7 +242,7 @@
             this.pictureBox1.Image = global::ProxyGui.Properties.Resources.Gui_logo;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(195, 92);
+            this.pictureBox1.Size = new System.Drawing.Size(227, 92);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
@@ -249,7 +251,7 @@
             // 
             this.VersionLbl.AutoSize = true;
             this.VersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLbl.Location = new System.Drawing.Point(154, 305);
+            this.VersionLbl.Location = new System.Drawing.Point(186, 305);
             this.VersionLbl.Name = "VersionLbl";
             this.VersionLbl.Size = new System.Drawing.Size(41, 13);
             this.VersionLbl.TabIndex = 21;
@@ -277,11 +279,21 @@
             this.UsrModeLbl.TabIndex = 23;
             this.UsrModeLbl.Text = "USERMODE";
             // 
+            // TrayIcon
+            // 
+            this.TrayIcon.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.TrayIcon.BalloonTipText = "Program is running in the background...";
+            this.TrayIcon.BalloonTipTitle = "ProxyGUI";
+            this.TrayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("TrayIcon.Icon")));
+            this.TrayIcon.Text = "ProxyGUI";
+            this.TrayIcon.Visible = true;
+            this.TrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIcon_MouseDoubleClick_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(195, 319);
+            this.ClientSize = new System.Drawing.Size(227, 319);
             this.Controls.Add(this.UsrModeLbl);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.VersionLbl);
@@ -306,15 +318,17 @@
             this.Controls.Add(this.TxtHostPort);
             this.Controls.Add(this.TxtCientPort);
             this.Controls.Add(this.TxtHostName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "ProxyGUI";
             this.TransparencyKey = System.Drawing.Color.Magenta;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
@@ -348,6 +362,7 @@
         private System.Windows.Forms.Label VersionLbl;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label UsrModeLbl;
+        private System.Windows.Forms.NotifyIcon TrayIcon;
     }
 }
 
