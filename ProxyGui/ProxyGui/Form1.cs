@@ -18,12 +18,15 @@ using System.Diagnostics;
  *   date    | user  | changelog
  *   --------------------------
  * 09-mar-15 | james | kais demise, versioning, magicorp update, write libs on boot, update form layout, combine to master on gh
+ * 09-mar-15 | james | fancy label stuff, login shit fancy shit fucking fancy 
  * 09-mar-15 | rhys  | created logo for form, created kais demise image
  * 
  * 
  * 
  * 
- * 
+ *             TO  DO
+ *Poll server for authed logins
+ *
  * 
  * 
  * */
@@ -34,7 +37,7 @@ namespace ProxyGui
     public partial class Form1 : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        string version = "107"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        string version = "108"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
 
         Proxy _prox;
@@ -47,7 +50,10 @@ namespace ProxyGui
             //     
             //        if (!File.Exists("MagiCorpUpdater.exe"))
             //            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
-
+       
+            //parenting
+            pictureBox1.Controls.Add(pictureBox2);
+            
 
             this.Text = "Disconnected";
             this.TxtCientPort.Enabled = false;
@@ -173,13 +179,25 @@ namespace ProxyGui
 
             VersionLbl.Text = version;
             //Kai'sDemise
-            if (Environment.UserName.Contains("james"))
+        //    if (Environment.UserName.Contains("james"))
+            string[] NamesToTroll = new string[]{"james", "rhys"};
+             if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(NamesToTroll, StringSplitOptions.None).Length>1)
             {
-
-                pictureBox1.Image = Properties.Resources.kai_fun_stuff;
-
+        //        MessageBox.Show("HI KAI");
+                pictureBox2.Visible = true;
+                UsrModeLbl.Text = "Developer Mode";
             }
-
+             else if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(new string[]{"kai"}, StringSplitOptions.None).Length > 1)
+             {
+                 pictureBox2.Visible = true;
+                 pictureBox2.Image = Properties.Resources.kai_fun_stuff;
+                 UsrModeLbl.Text = "Debug Mode";
+             }
+             else
+             {
+                 UsrModeLbl.Text = "User Mode";
+             }
+             //MessageBox.Show(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
             //make sure runtimes exist... placing them on EACH boot (fixing update only updating proxygui.exe)
             try
             {
