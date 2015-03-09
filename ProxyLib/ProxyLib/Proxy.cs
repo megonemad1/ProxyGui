@@ -32,7 +32,7 @@ namespace ProxyLib
         bool _open;
         bool closed;
         /// <summary>
-        /// returns weather the ssh conection is live and open
+        /// returns whether the ssh connection is live and open
         /// </summary>
         public bool Open { get { return _open; } }
         [DllImport("wininet.dll")]
@@ -41,7 +41,7 @@ namespace ProxyLib
         public const int INTERNET_OPTION_REFRESH = 37;
         static bool settingsReturn, refreshReturn;
         /// <summary>
-        /// sets target port and Listioning port to defaults (22,8080)
+        /// sets target port and listening port to defaults (22,8080)
         /// </summary>
         public Proxy()
         {
@@ -61,7 +61,7 @@ namespace ProxyLib
         /// <summary>
         /// Hides The Shell
         /// </summary>
-        /// <param name="h">weather the proxy shell should be hidden</param>
+        /// <param name="h">whether the proxy shell should be hidden</param>
         /// <returns>Amended object</returns>
         public Proxy AutoStoreSshkey(bool h)
         {
@@ -70,7 +70,7 @@ namespace ProxyLib
         /// <summary>
         /// Hides The Shell
         /// </summary>
-        /// <param name="h">weather the proxy shell should be hidden</param>
+        /// <param name="h">whether the proxy shell should be hidden</param>
         /// <returns>Amended object</returns>
         public Proxy TurnOffShell(bool h)
         {
@@ -79,14 +79,14 @@ namespace ProxyLib
         /// <summary>
         /// Sets the Proxy into verbose mode
         /// </summary>
-        /// <param name="h">weather the proxy should be verbose</param>
+        /// <param name="h">whether the proxy should be verbose</param>
         /// <returns>Amended object</returns>
         public Proxy Verbose(bool h)
         {
             verbose = h; return this;
         }
         /// <summary>
-        /// sets the ssh Server you want to conect to
+        /// Sets the ssh server you want to conect to
         /// </summary>
         /// <param name="h">Host Name</param>
         /// <returns>Amended object</returns>
@@ -96,7 +96,7 @@ namespace ProxyLib
             return this;
         }
         /// <summary>
-        /// sets the ssh Port to listion on
+        /// Sets the ssh port to listion on
         /// </summary>
         /// <param name="h">Port</param>
         /// <returns>Amended object</returns>
@@ -106,7 +106,7 @@ namespace ProxyLib
             return this;
         }
         /// <summary>
-        /// sets the ssh Port to conect to
+        /// sets the ssh port to conect to
         /// </summary>
         /// <param name="h">port</param>
         /// <returns>Amended object</returns>
@@ -116,7 +116,7 @@ namespace ProxyLib
             return this;
         }
         /// <summary>
-        /// sets the ssh usename
+        /// Sets the ssh usename
         /// </summary>
         /// <param name="h">usename</param>
         /// <returns>Amended object</returns>
@@ -141,7 +141,7 @@ namespace ProxyLib
             if (host + Serverport + username + password == "")
                 return;
             closed = false;
-            Console.WriteLine("Changing LAN Proxy...");
+            Console.WriteLine("[Runtime]Changing LAN Proxy...");
             ChangeLanProxySettings(1, String.Format("socks=LOCALHOST:{0}", Cientport));
 
             OpenSshConection();
@@ -156,7 +156,7 @@ namespace ProxyLib
             registry.SetValue("ProxyEnable", on);//turn on off
             registry.SetValue("ProxyServer", proxsettings);//chane the settings
             // These lines implement the Interface in the beginning of program 
-            // They cause the OS to refresh the settings, causing IP to realy update
+            // They cause the OS to refresh the settings, causing IP to really update
             settingsReturn = InternetSetOption(IntPtr.Zero, INTERNET_OPTION_SETTINGS_CHANGED, IntPtr.Zero, 0);
             refreshReturn = InternetSetOption(IntPtr.Zero, INTERNET_OPTION_REFRESH, IntPtr.Zero, 0);
 
@@ -164,9 +164,10 @@ namespace ProxyLib
 
         private void OpenSshConection()
         {
+            //keeping this in as a safeguard (fixing proxygui.exe only being updated)
             string path = "klink.exe";
             if (!File.Exists(path))
-                System.IO.File.WriteAllBytes(path, ProxyLib.Properties.Resources.klink);
+                System.IO.File.WriteAllBytes(path, Properties.Resources.klink);
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = path;
             startInfo.Arguments = string.Format("-ssh -l {0} -pw {1} -D {2} -P {3} {4} {5} {6} {7}", username, password, this.Cientport, this.Serverport, (verbose) ? "-v" : "", (auto_store_sshkey) ? "-auto_store_sshkey" : "", (NoShell) ? "-N" : "", host);
@@ -197,26 +198,26 @@ namespace ProxyLib
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("[Runtime]" + e.Message);
             }
 
             _open = false;
-            Console.WriteLine("Closing SSH...");
+            Console.WriteLine("[Runtime]Closing SSH...");
             ChangeLanProxySettings(0, (this.OldSettings == null) ? "" : OldSettings);
-            Console.WriteLine("Returned LAN Proxy");
+            Console.WriteLine("[Runtime]Returned LAN Proxy");
             SessionTerminated(this, new ProxyInfo(String.Format("{0}, {1}, {2}, {3}", host, Serverport, this.Cientport, this.username)));
 
         }
 
         void Proxy_SessionStarted(object source, ProxyInfo e)
         {
-            Console.WriteLine("Starting SSH...");
+            Console.WriteLine("[Runtime]Starting SSH...");
             _open = true;
         }
 
         void Proxy_SessionTerminated(object source, ProxyInfo e)
         {
-            Console.WriteLine("Closed SSH...");
+            Console.WriteLine("[Runtime]Closed SSH...");
             closed = true;
         }
 

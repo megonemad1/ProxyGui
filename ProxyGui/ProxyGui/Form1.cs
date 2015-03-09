@@ -10,21 +10,49 @@ using System.Windows.Forms;
 using ProxyLib;
 using System.IO;
 using System.Reflection;
+using System.Diagnostics;
+
+
+
+/*          CHANGE  LOG   
+ *   date    | user  | changelog
+ *   --------------------------
+ * 09-mar-15 | james | kais demise, versioning, magicorp update, write libs on boot, update form layout, combine to master on gh
+ * 09-mar-15 | rhys  | created logo for form, created kais demise image
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * */
+
 
 namespace ProxyGui
 {
     public partial class Form1 : Form
     {
+        //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
+        string version = "107"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
+
         Proxy _prox;
         public Form1()
         {
             InitializeComponent();
-            string path = "ProxyLib.dll";
-            if (!File.Exists(path))
-                System.IO.File.WriteAllBytes(path, ProxyGui.Properties.Resources.ProxyLib);
+            //        string path = "ProxyLib.dll";
+            //    if (!File.Exists(path))
+            //           System.IO.File.WriteAllBytes(path, ProxyGui.Properties.Resources.ProxyLib);
+            //     
+            //        if (!File.Exists("MagiCorpUpdater.exe"))
+            //            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
+
+
             this.Text = "Disconnected";
             this.TxtCientPort.Enabled = false;
             this.TxtHostPort.Enabled = false;
+
         }
 
         private void BtnStartStop_Click(object sender, EventArgs e)
@@ -109,6 +137,11 @@ namespace ProxyGui
 
             }
 
+            //program updatah
+            //    Assembly assembly = Assembly.GetExecutingAssembly();
+            //    FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+            //   string version = fileVersionInfo.ProductVersion;
+
 
             try
             {
@@ -131,13 +164,48 @@ namespace ProxyGui
             }
             Console.WriteLine("Saved settings.");
 
-
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            //Version label
+
+            VersionLbl.Text = version;
+            //Kai'sDemise
+            if (Environment.UserName.Contains("james"))
+            {
+
+                pictureBox1.Image = Properties.Resources.kai_fun_stuff;
+
+            }
+
+            //make sure runtimes exist... placing them on EACH boot (fixing update only updating proxygui.exe)
+            try
+            {
+
+            
+            //     if (!File.Exists("ProxyLib.dll"))
+            //       {
+            System.IO.File.WriteAllBytes("ProxyLib.dll", ProxyGui.Properties.Resources.ProxyLib);
+            //       }
+
+            //       if (!File.Exists("MagiCorpUpdater.exe"))
+            //        {
+            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
+            //       }
+
+            //      if (!File.Exists("klink.exe"))
+            //      {
+            System.IO.File.WriteAllBytes("klink.exe", Properties.Resources.klink);
+            //      }
+            }
+            catch (Exception xe)
+            {
+
+                Console.WriteLine(xe.Message);
+            }
+
             //Magic's save&load shit.
             try
             {
@@ -158,12 +226,22 @@ namespace ProxyGui
             }
             Console.WriteLine("Loaded settings.");
 
+            //program updatah
+            // Process.Start("MagiCorpUpdater.exe","-p: ProxyGUI -v: 100 -s: http://magicorpltd.co.uk/updater");
+
+
         }
 
         private void ChkHideShell_CheckedChanged(object sender, EventArgs e)
         {
             if (!(sender as CheckBox).Checked)
                 TxtPassword.Text = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
+            this.Close();
         }
     }
 }
