@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
+    <None Include="Resources\klink.exe" />
     <None Include="Resources\ProxyLib.dll" />
     <None Include="Resources\kai fun stuff.png" />
     <None Include="Resources\Gui logo.png" />

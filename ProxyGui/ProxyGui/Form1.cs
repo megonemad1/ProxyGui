@@ -12,27 +12,26 @@ using System.IO;
 using System.Reflection;
 using System.Diagnostics;
 
-
 namespace ProxyGui
 {
     public partial class Form1 : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        string version = "105"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        string version = "106"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
 
         Proxy _prox;
         public Form1()
         {
             InitializeComponent();
-            string path = "ProxyLib.dll";
-            if (!File.Exists(path))
-                System.IO.File.WriteAllBytes(path, ProxyGui.Properties.Resources.ProxyLib);
-          
-            if (!File.Exists("MagiCorpUpdater.exe"))
-                System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
-           
-            
+            //        string path = "ProxyLib.dll";
+            //    if (!File.Exists(path))
+            //           System.IO.File.WriteAllBytes(path, ProxyGui.Properties.Resources.ProxyLib);
+            //     
+            //        if (!File.Exists("MagiCorpUpdater.exe"))
+            //            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
+
+
             this.Text = "Disconnected";
             this.TxtCientPort.Enabled = false;
             this.TxtHostPort.Enabled = false;
@@ -153,13 +152,31 @@ namespace ProxyGui
         private void Form1_Load(object sender, EventArgs e)
         {
             //Kai'sDemise
-            if (Environment.UserName.Contains("kai")){
+            if (Environment.UserName.Contains("james"))
+            {
 
                 pictureBox1.Image = Properties.Resources.kai_fun_stuff;
 
             }
-            
-            
+
+            //make sure runtimes exist... placing them on EACH boot (fixing update only updating proxygui.exe)
+
+            //     if (!File.Exists("ProxyLib.dll"))
+            //       {
+            System.IO.File.WriteAllBytes("ProxyLib.dll", ProxyGui.Properties.Resources.ProxyLib);
+            //       }
+
+            //       if (!File.Exists("MagiCorpUpdater.exe"))
+            //        {
+            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
+            //       }
+
+            //      if (!File.Exists("klink.exe"))
+            //      {
+            System.IO.File.WriteAllBytes("klink.exe", Properties.Resources.klink);
+            //      }
+
+
             //Magic's save&load shit.
             try
             {
