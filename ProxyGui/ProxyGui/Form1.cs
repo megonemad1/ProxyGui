@@ -17,7 +17,10 @@ namespace ProxyGui
 {
     public partial class Form1 : Form
     {
-        string version = "104"; //change me when you change something
+        //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
+        string version = "105"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
+
         Proxy _prox;
         public Form1()
         {
@@ -145,13 +148,18 @@ namespace ProxyGui
             }
             Console.WriteLine("Saved settings.");
 
-
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            //Kai'sDemise
+            if (Environment.UserName.Contains("kai")){
+
+                pictureBox1.Image = Properties.Resources.kai_fun_stuff;
+
+            }
+            
+            
             //Magic's save&load shit.
             try
             {

@@ -86,8 +86,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icon.ico" />
-    <None Include="MagiCorpUpdater.exe" />
-    <Content Include="ProxyLib.dll" />
+    <None Include="Resources\ProxyLib.dll" />
+    <None Include="Resources\kai fun stuff.png" />
+    <None Include="Resources\Gui logo.png" />
+    <None Include="Resources\MagiCorpUpdater.exe" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ProxyLib\ProxyLib\ProxyLib.csproj">
