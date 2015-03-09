@@ -50,6 +50,7 @@
             this.ChkSaveKey = new System.Windows.Forms.CheckBox();
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.VersionLbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -241,11 +242,22 @@
             this.pictureBox1.TabIndex = 20;
             this.pictureBox1.TabStop = false;
             // 
+            // VersionLbl
+            // 
+            this.VersionLbl.AutoSize = true;
+            this.VersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.VersionLbl.Location = new System.Drawing.Point(154, 305);
+            this.VersionLbl.Name = "VersionLbl";
+            this.VersionLbl.Size = new System.Drawing.Size(41, 13);
+            this.VersionLbl.TabIndex = 21;
+            this.VersionLbl.Text = "version";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(195, 310);
+            this.ClientSize = new System.Drawing.Size(195, 319);
+            this.Controls.Add(this.VersionLbl);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.ChkHideShell);
@@ -304,6 +316,7 @@
         private System.Windows.Forms.CheckBox ChkSaveKey;
         private System.Windows.Forms.Button BtnUpdate;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label VersionLbl;
     }
 }
 

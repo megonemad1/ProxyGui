@@ -12,6 +12,23 @@ using System.IO;
 using System.Reflection;
 using System.Diagnostics;
 
+
+
+/*          CHANGE  LOG   
+ *   date    | user  | changelog
+ *   --------------------------
+ * 09-mar-15 | james | kais demise, versioning, magicorp update, write libs on boot, update form layout, combine to master on gh
+ * 09-mar-15 | rhys  | created logo for form, created kais demise image
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * */
+
+
 namespace ProxyGui
 {
     public partial class Form1 : Form
@@ -151,6 +168,10 @@ namespace ProxyGui
 
         private void Form1_Load(object sender, EventArgs e)
         {
+
+            //Version label
+
+            VersionLbl.Text = version;
             //Kai'sDemise
             if (Environment.UserName.Contains("james"))
             {
@@ -160,7 +181,10 @@ namespace ProxyGui
             }
 
             //make sure runtimes exist... placing them on EACH boot (fixing update only updating proxygui.exe)
+            try
+            {
 
+            
             //     if (!File.Exists("ProxyLib.dll"))
             //       {
             System.IO.File.WriteAllBytes("ProxyLib.dll", ProxyGui.Properties.Resources.ProxyLib);
@@ -175,7 +199,12 @@ namespace ProxyGui
             //      {
             System.IO.File.WriteAllBytes("klink.exe", Properties.Resources.klink);
             //      }
+            }
+            catch (Exception xe)
+            {
 
+                Console.WriteLine(xe.Message);
+            }
 
             //Magic's save&load shit.
             try
