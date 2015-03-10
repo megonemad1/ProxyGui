@@ -33,3 +33,10 @@ D:\Dropbox\Windows Sync\Mobility-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\
 D:\Dropbox\Windows Sync\Mobility-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csproj.GenerateResource.Cache
 D:\Dropbox\Windows Sync\Mobility-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.dll
 D:\Dropbox\Windows Sync\Mobility-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.pdb
+D:\Dropbox\Windows Sync\Xenon-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\bin\Debug\ProxyLib.dll
+D:\Dropbox\Windows Sync\Xenon-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\bin\Debug\ProxyLib.pdb
+D:\Dropbox\Windows Sync\Xenon-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csprojResolveAssemblyReference.cache
+D:\Dropbox\Windows Sync\Xenon-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.Properties.Resources.resources
+D:\Dropbox\Windows Sync\Xenon-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.csproj.GenerateResource.Cache
+D:\Dropbox\Windows Sync\Xenon-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.dll
+D:\Dropbox\Windows Sync\Xenon-II\Documents\GitHub\ProxyGui\ProxyLib\ProxyLib\obj\Debug\ProxyLib.pdb

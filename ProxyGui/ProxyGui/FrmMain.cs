@@ -21,7 +21,7 @@ using System.Diagnostics;
  * 09-mar-15 | james | fancy label stuff, login shit fancy shit fucking fancy 
  * 09-mar-15 | rhys  | created logo for form, created kais demise image
  * 
- * 
+ * 10-mar-15 | james | added high bandwidth server option
  * 
  * 
  *             TO  DO
@@ -34,14 +34,14 @@ using System.Diagnostics;
 
 namespace ProxyGui
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        string version = "109"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+       public string version = "110"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
 
         Proxy _prox;
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
             //        string path = "ProxyLib.dll";
@@ -278,10 +278,13 @@ namespace ProxyGui
                 TxtPassword.Text = "";
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
-            this.Close();
+          //  Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
+
+            FrmServerSelect SelectServer = new FrmServerSelect();
+            SelectServer.Show();
+       //     this.Hide();
         }
 
      
