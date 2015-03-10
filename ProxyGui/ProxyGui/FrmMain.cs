@@ -21,12 +21,18 @@ using System.Diagnostics;
  * 09-mar-15 | james | fancy label stuff, login shit fancy shit fucking fancy 
  * 09-mar-15 | rhys  | created logo for form, created kais demise image
  * 
- * 10-mar-15 | james | added high bandwidth server option
+ * 10-mar-15 | james | added high bandwidth server option, cleaning code, new form to select servers and testing characters in version
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
  * 
  * 
  *             TO  DO
- *Poll server for authed logins
- *
+ *Poll server for authed logins <encrypted as bin?>
+ *Setup ping on serv selection
  * 
  * 
  * */
@@ -37,7 +43,7 @@ namespace ProxyGui
     public partial class FrmMain : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-       public string version = "110"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        public string version = "112"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
 
         Proxy _prox;
@@ -51,7 +57,7 @@ namespace ProxyGui
             //        if (!File.Exists("MagiCorpUpdater.exe"))
             //            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
 
-            //parenting
+            //parenting pictureboxes together
             pictureBox1.Controls.Add(pictureBox2);
 
 
@@ -171,26 +177,7 @@ namespace ProxyGui
             //   string version = fileVersionInfo.ProductVersion;
 
 
-            try
-            {
-                //saveshit
-                Properties.Settings.Default.Advanced = chkAdvanced.Checked;
-                Properties.Settings.Default.ClientPort = TxtCientPort.Text;
-                Properties.Settings.Default.HiddenShell = ChkHideShell.Checked;
-                Properties.Settings.Default.SaveKey = ChkSaveKey.Checked;
-                Properties.Settings.Default.Host = TxtHostName.Text;
-                Properties.Settings.Default.HostPort = TxtHostPort.Text;
-                Properties.Settings.Default.Username = TxtUserName.Text;
-                Properties.Settings.Default.Verbose = ChkVerbose.Checked;
-                Properties.Settings.Default.Save();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                MessageBox.Show(ex.Message);
-                Console.WriteLine("Failed to save settings...");
-            }
-            Console.WriteLine("Saved settings.");
+            Save();
 
         }
 
@@ -198,11 +185,12 @@ namespace ProxyGui
         {
 
             //Version label
-
             VersionLbl.Text = version;
+
             //Kai'sDemise
-            //    if (Environment.UserName.Contains("james"))
+
             string[] NamesToTroll = new string[] { "james", "rhys" };
+
             if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(NamesToTroll, StringSplitOptions.None).Length > 1)
             {
                 //        MessageBox.Show("HI KAI");
@@ -246,6 +234,58 @@ namespace ProxyGui
                 Console.WriteLine(xe.Message);
             }
 
+            LoadSettings();
+
+            //program updatah
+            // Process.Start("MagiCorpUpdater.exe","-p: ProxyGUI -v: 100 -s: http://magicorpltd.co.uk/updater");
+
+
+        }
+
+        private void ChkHideShell_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!(sender as CheckBox).Checked)
+                TxtPassword.Text = "";
+        }
+
+        private void BtnUpdate_Click(object sender, EventArgs e)
+        {
+            //  Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
+
+            FrmServerSelect SelectServer = new FrmServerSelect();
+            SelectServer.Show();
+            //     this.Hide();
+        }
+
+
+
+        private void Save()
+        {
+            try
+            {
+                //saveshit
+                Properties.Settings.Default.Advanced = chkAdvanced.Checked;
+                Properties.Settings.Default.ClientPort = TxtCientPort.Text;
+                Properties.Settings.Default.HiddenShell = ChkHideShell.Checked;
+                Properties.Settings.Default.SaveKey = ChkSaveKey.Checked;
+                Properties.Settings.Default.Host = TxtHostName.Text;
+                Properties.Settings.Default.HostPort = TxtHostPort.Text;
+                Properties.Settings.Default.Username = TxtUserName.Text;
+                Properties.Settings.Default.Verbose = ChkVerbose.Checked;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+                Console.WriteLine("Failed to save settings...");
+            }
+            Console.WriteLine("Saved settings.");
+        }
+
+        private void LoadSettings()
+        {
+
             //Magic's save&load shit.
             try
             {
@@ -265,30 +305,8 @@ namespace ProxyGui
                 Console.WriteLine("Failed to load settings...");
             }
             Console.WriteLine("Loaded settings.");
-
-            //program updatah
-            // Process.Start("MagiCorpUpdater.exe","-p: ProxyGUI -v: 100 -s: http://magicorpltd.co.uk/updater");
-
-
         }
 
-        private void ChkHideShell_CheckedChanged(object sender, EventArgs e)
-        {
-            if (!(sender as CheckBox).Checked)
-                TxtPassword.Text = "";
-        }
 
-        private void BtnUpdate_Click(object sender, EventArgs e)
-        {
-          //  Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
-
-            FrmServerSelect SelectServer = new FrmServerSelect();
-            SelectServer.Show();
-       //     this.Hide();
-        }
-
-     
-
-        
     }
 }
