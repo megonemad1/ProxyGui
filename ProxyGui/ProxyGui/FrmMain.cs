@@ -23,7 +23,7 @@ using System.Diagnostics;
  * 
  * 10-mar-15 | james | added high bandwidth server option, cleaning code, new form to select servers and testing characters in version
  * 
- * 
+ * 16-mar-15 | james | ...
  * 
  * 
  * 
@@ -31,7 +31,11 @@ using System.Diagnostics;
  * 
  * 
  *             TO  DO
- *Poll server for authed logins <encrypted as bin?>
+ *URGENT: setup ssh keys
+ *Maybe force user to input pw into klink? safer than -pw 
+ *-C compression option
+ *-i hashkey to login 
+ * Poll server for authed logins <encrypted as bin?>
  *Setup ping on serv selection
  * 
  * 
@@ -43,7 +47,7 @@ namespace ProxyGui
     public partial class FrmMain : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        public string version = "112"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        public string version = "113"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
 
         Proxy _prox;
@@ -117,7 +121,6 @@ namespace ProxyGui
 
         void _prox_SessionStarted(object source, ProxyInfo e)
         {
-
             SetControlPropertyThreadSafe(this, "Text", "Connected");
         }
 
@@ -129,7 +132,6 @@ namespace ProxyGui
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.Enter)
                 BtnStartStop_Click(button1, new EventArgs());
         }
@@ -189,18 +191,20 @@ namespace ProxyGui
 
             //Kai'sDemise
 
-            string[] NamesToTroll = new string[] { "james", "rhys" };
+            string[] DevUsr = new string[] { "james", "rhys" };
+            string[] DebugUsr = new string[] { "kai" };
 
-            if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(NamesToTroll, StringSplitOptions.None).Length > 1)
+            if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(DevUsr, StringSplitOptions.None).Length > 1)
             {
-                //        MessageBox.Show("HI KAI");
+
                 pictureBox2.Visible = true;
                 UsrModeLbl.Text = "Developer Mode";
             }
-            else if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(new string[] { "kai" }, StringSplitOptions.None).Length > 1)
+            else if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(DebugUsr, StringSplitOptions.None).Length > 1)
             {
+                MessageBox.Show("HI KAI");
                 pictureBox2.Visible = true;
-                pictureBox2.Image = Properties.Resources.kai_fun_stuff;
+                pictureBox2.Image = Properties.Resources.kai_fun_stuff;  //set this to kais special ver
                 UsrModeLbl.Text = "Debug Mode";
             }
             else
@@ -208,6 +212,8 @@ namespace ProxyGui
                 UsrModeLbl.Text = "User Mode";
             }
             //MessageBox.Show(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
+
+
             //make sure runtimes exist... placing them on EACH boot (fixing update only updating proxygui.exe)
             try
             {
@@ -305,6 +311,26 @@ namespace ProxyGui
                 Console.WriteLine("Failed to load settings...");
             }
             Console.WriteLine("Loaded settings.");
+        }
+
+        private void chkUseKey_CheckedChanged(object sender, EventArgs e)
+        {
+            //Use an SSH key instead of password
+            if (chkUseKey.Checked)
+            {
+                LblPWorKEY.Text = "Key Hash: ";
+            }
+            else
+            {
+                LblPWorKEY.Text = "Password: ";
+            }
+
+
+        }
+
+        private void chkCompress_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
 
 

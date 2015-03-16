@@ -38,7 +38,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.TxtUserName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.LblPWorKEY = new System.Windows.Forms.Label();
             this.TxtPassword = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.chkAdvanced = new System.Windows.Forms.CheckBox();
@@ -55,6 +55,10 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.UsrModeLbl = new System.Windows.Forms.Label();
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.chkCompress = new System.Windows.Forms.CheckBox();
+            this.Compress = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.chkUseKey = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -123,16 +127,16 @@
             this.TxtUserName.Location = new System.Drawing.Point(65, 192);
             this.TxtUserName.Name = "TxtUserName";
             this.TxtUserName.Size = new System.Drawing.Size(150, 20);
-            this.TxtUserName.TabIndex = 6;
+            this.TxtUserName.TabIndex = 3;
             // 
-            // label5
+            // LblPWorKEY
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 221);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(56, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Password:";
+            this.LblPWorKEY.AutoSize = true;
+            this.LblPWorKEY.Location = new System.Drawing.Point(6, 221);
+            this.LblPWorKEY.Name = "LblPWorKEY";
+            this.LblPWorKEY.Size = new System.Drawing.Size(56, 13);
+            this.LblPWorKEY.TabIndex = 9;
+            this.LblPWorKEY.Text = "Password:";
             // 
             // TxtPassword
             // 
@@ -140,14 +144,14 @@
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
             this.TxtPassword.Size = new System.Drawing.Size(150, 20);
-            this.TxtPassword.TabIndex = 8;
+            this.TxtPassword.TabIndex = 4;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(10, 279);
+            this.button1.Location = new System.Drawing.Point(10, 298);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 23);
-            this.button1.TabIndex = 10;
+            this.button1.TabIndex = 11;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.BtnStartStop_Click);
@@ -158,7 +162,7 @@
             this.chkAdvanced.Location = new System.Drawing.Point(74, 244);
             this.chkAdvanced.Name = "chkAdvanced";
             this.chkAdvanced.Size = new System.Drawing.Size(15, 14);
-            this.chkAdvanced.TabIndex = 11;
+            this.chkAdvanced.TabIndex = 5;
             this.chkAdvanced.UseVisualStyleBackColor = true;
             this.chkAdvanced.CheckedChanged += new System.EventHandler(this.chkAdvanced_CheckedChanged);
             // 
@@ -186,22 +190,24 @@
             this.ChkVerbose.Location = new System.Drawing.Point(198, 244);
             this.ChkVerbose.Name = "ChkVerbose";
             this.ChkVerbose.Size = new System.Drawing.Size(15, 14);
-            this.ChkVerbose.TabIndex = 14;
+            this.ChkVerbose.TabIndex = 6;
             this.ChkVerbose.UseVisualStyleBackColor = true;
             // 
             // ChkHideShell
             // 
             this.ChkHideShell.AutoSize = true;
+            this.ChkHideShell.Enabled = false;
             this.ChkHideShell.Location = new System.Drawing.Point(198, 262);
             this.ChkHideShell.Name = "ChkHideShell";
             this.ChkHideShell.Size = new System.Drawing.Size(15, 14);
-            this.ChkHideShell.TabIndex = 18;
+            this.ChkHideShell.TabIndex = 8;
             this.ChkHideShell.UseVisualStyleBackColor = true;
             this.ChkHideShell.CheckedChanged += new System.EventHandler(this.ChkHideShell_CheckedChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Enabled = false;
             this.label8.Location = new System.Drawing.Point(137, 262);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(55, 13);
@@ -223,15 +229,15 @@
             this.ChkSaveKey.Location = new System.Drawing.Point(74, 262);
             this.ChkSaveKey.Name = "ChkSaveKey";
             this.ChkSaveKey.Size = new System.Drawing.Size(15, 14);
-            this.ChkSaveKey.TabIndex = 15;
+            this.ChkSaveKey.TabIndex = 7;
             this.ChkSaveKey.UseVisualStyleBackColor = true;
             // 
             // BtnUpdate
             // 
-            this.BtnUpdate.Location = new System.Drawing.Point(128, 279);
+            this.BtnUpdate.Location = new System.Drawing.Point(128, 298);
             this.BtnUpdate.Name = "BtnUpdate";
             this.BtnUpdate.Size = new System.Drawing.Size(87, 23);
-            this.BtnUpdate.TabIndex = 19;
+            this.BtnUpdate.TabIndex = 12;
             this.BtnUpdate.Text = "Update";
             this.BtnUpdate.UseVisualStyleBackColor = true;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
@@ -251,7 +257,7 @@
             // 
             this.VersionLbl.AutoSize = true;
             this.VersionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionLbl.Location = new System.Drawing.Point(186, 305);
+            this.VersionLbl.Location = new System.Drawing.Point(186, 324);
             this.VersionLbl.Name = "VersionLbl";
             this.VersionLbl.Size = new System.Drawing.Size(41, 13);
             this.VersionLbl.TabIndex = 21;
@@ -273,7 +279,7 @@
             // 
             this.UsrModeLbl.AutoSize = true;
             this.UsrModeLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.UsrModeLbl.Location = new System.Drawing.Point(4, 305);
+            this.UsrModeLbl.Location = new System.Drawing.Point(4, 324);
             this.UsrModeLbl.Name = "UsrModeLbl";
             this.UsrModeLbl.Size = new System.Drawing.Size(69, 13);
             this.UsrModeLbl.TabIndex = 23;
@@ -289,11 +295,55 @@
             this.TrayIcon.Visible = true;
             this.TrayIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TrayIcon_MouseDoubleClick_1);
             // 
+            // chkCompress
+            // 
+            this.chkCompress.AutoSize = true;
+            this.chkCompress.Location = new System.Drawing.Point(198, 279);
+            this.chkCompress.Name = "chkCompress";
+            this.chkCompress.Size = new System.Drawing.Size(15, 14);
+            this.chkCompress.TabIndex = 10;
+            this.chkCompress.UseVisualStyleBackColor = true;
+            this.chkCompress.CheckedChanged += new System.EventHandler(this.chkCompress_CheckedChanged);
+            // 
+            // Compress
+            // 
+            this.Compress.AutoSize = true;
+            this.Compress.Location = new System.Drawing.Point(137, 279);
+            this.Compress.Name = "Compress";
+            this.Compress.Size = new System.Drawing.Size(53, 13);
+            this.Compress.TabIndex = 26;
+            this.Compress.Text = "Compress";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Enabled = false;
+            this.label11.Location = new System.Drawing.Point(12, 278);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(47, 13);
+            this.label11.TabIndex = 25;
+            this.label11.Text = "Use Key";
+            // 
+            // chkUseKey
+            // 
+            this.chkUseKey.AutoSize = true;
+            this.chkUseKey.Enabled = false;
+            this.chkUseKey.Location = new System.Drawing.Point(74, 279);
+            this.chkUseKey.Name = "chkUseKey";
+            this.chkUseKey.Size = new System.Drawing.Size(15, 14);
+            this.chkUseKey.TabIndex = 9;
+            this.chkUseKey.UseVisualStyleBackColor = true;
+            this.chkUseKey.CheckedChanged += new System.EventHandler(this.chkUseKey_CheckedChanged);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(227, 319);
+            this.ClientSize = new System.Drawing.Size(227, 341);
+            this.Controls.Add(this.chkCompress);
+            this.Controls.Add(this.Compress);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.chkUseKey);
             this.Controls.Add(this.UsrModeLbl);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.VersionLbl);
@@ -308,7 +358,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.chkAdvanced);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.LblPWorKEY);
             this.Controls.Add(this.TxtPassword);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.TxtUserName);
@@ -318,7 +368,7 @@
             this.Controls.Add(this.TxtHostPort);
             this.Controls.Add(this.TxtCientPort);
             this.Controls.Add(this.TxtHostName);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
@@ -346,7 +396,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox TxtUserName;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label LblPWorKEY;
         private System.Windows.Forms.TextBox TxtPassword;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox chkAdvanced;
@@ -363,6 +413,10 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label UsrModeLbl;
         private System.Windows.Forms.NotifyIcon TrayIcon;
+        private System.Windows.Forms.CheckBox chkCompress;
+        private System.Windows.Forms.Label Compress;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox chkUseKey;
     }
 }
 
