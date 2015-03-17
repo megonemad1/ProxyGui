@@ -98,15 +98,19 @@ namespace ProxyGui
                     _prox.setCientport(TxtCientPort.Text).setServerport(TxtHostPort.Text);
                 else
                     _prox.setCientport("8080").setServerport("22");
-                _prox.TurnOffShell(ChkHideShell.Checked).AutoStoreSshkey(ChkSaveKey.Checked).setpassword(TxtPassword.Text).sethost(TxtHostName.Text).setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
+                
+                //this is broke somehow
+                _prox.sethost(TxtHostName.Text).TurnOffShell(ChkHideShell.Checked).AutoStoreSshkey(ChkSaveKey.Checked).setpassword(TxtPassword.Text).sethost(TxtHostName.Text).setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
+                //or in proxy.cs
+
                 _prox.SessionTerminated += _prox_SessionTerminated;
                 _prox.Start();
                 this.Text = "Connecting";
-                BtnStartStop.Text = "Stop";
+                button1.Text = "Stop";
             }
             else if (((Button)sender).Text == "Stop")
             {
-                BtnStartStop.Text = "Closing";
+                button1.Text = "Closing";
                 this.Text = "Disconnecting";
                 _prox.Stop();
 
@@ -121,13 +125,13 @@ namespace ProxyGui
         void _prox_SessionTerminated(object source, ProxyInfo e)
         {
             SetControlPropertyThreadSafe(this, "Text", "Disconnected");
-            SetControlPropertyThreadSafe(BtnStartStop, "Text", "Start");
+            SetControlPropertyThreadSafe(button1, "Text", "Start");
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                BtnStartStop_Click(BtnStartStop, new EventArgs());
+                BtnStartStop_Click(button1, new EventArgs());
             else if (e.KeyCode == Keys.Insert)
             {
 
@@ -178,9 +182,9 @@ namespace ProxyGui
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (BtnStartStop.Text == "Stop")
+            if (button1.Text == "Stop")
             {
-                BtnStartStop.Text = "Closing";
+                button1.Text = "Closing";
                 this.Text = "Disconnecting";
                 _prox.Stop();
 

@@ -40,7 +40,7 @@
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.LblPWorKEY = new System.Windows.Forms.Label();
             this.TxtPassword = new System.Windows.Forms.TextBox();
-            this.BtnStartStop = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.chkAdvanced = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -148,15 +148,15 @@
             this.TxtPassword.Size = new System.Drawing.Size(150, 20);
             this.TxtPassword.TabIndex = 4;
             // 
-            // BtnStartStop
+            // button1
             // 
-            this.BtnStartStop.Location = new System.Drawing.Point(10, 298);
-            this.BtnStartStop.Name = "BtnStartStop";
-            this.BtnStartStop.Size = new System.Drawing.Size(112, 23);
-            this.BtnStartStop.TabIndex = 11;
-            this.BtnStartStop.Text = "Start";
-            this.BtnStartStop.UseVisualStyleBackColor = true;
-            this.BtnStartStop.Click += new System.EventHandler(this.BtnStartStop_Click);
+            this.button1.Location = new System.Drawing.Point(10, 298);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(112, 23);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Start";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.BtnStartStop_Click);
             // 
             // chkAdvanced
             // 
@@ -361,7 +361,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.chkAdvanced);
-            this.Controls.Add(this.BtnStartStop);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.LblPWorKEY);
             this.Controls.Add(this.TxtPassword);
             this.Controls.Add(this.label4);
@@ -402,7 +402,7 @@
         private System.Windows.Forms.TextBox TxtUserName;
         private System.Windows.Forms.Label LblPWorKEY;
         private System.Windows.Forms.TextBox TxtPassword;
-        private System.Windows.Forms.Button BtnStartStop;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox chkAdvanced;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
