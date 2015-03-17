@@ -40,27 +40,27 @@
             this.TxtUserName = new System.Windows.Forms.TextBox();
             this.LblPWorKEY = new System.Windows.Forms.Label();
             this.TxtPassword = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnStartStop = new System.Windows.Forms.Button();
             this.chkAdvanced = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.ChkVerbose = new System.Windows.Forms.CheckBox();
             this.ChkHideShell = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.LblHideShell = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.ChkSaveKey = new System.Windows.Forms.CheckBox();
             this.BtnUpdate = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PicProxyGUI = new System.Windows.Forms.PictureBox();
             this.VersionLbl = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.PicImproved = new System.Windows.Forms.PictureBox();
             this.UsrModeLbl = new System.Windows.Forms.Label();
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.chkCompress = new System.Windows.Forms.CheckBox();
             this.Compress = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.chkUseKey = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicProxyGUI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicImproved)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtHostName
@@ -132,6 +132,7 @@
             // LblPWorKEY
             // 
             this.LblPWorKEY.AutoSize = true;
+            this.LblPWorKEY.Enabled = false;
             this.LblPWorKEY.Location = new System.Drawing.Point(6, 221);
             this.LblPWorKEY.Name = "LblPWorKEY";
             this.LblPWorKEY.Size = new System.Drawing.Size(56, 13);
@@ -140,21 +141,22 @@
             // 
             // TxtPassword
             // 
+            this.TxtPassword.Enabled = false;
             this.TxtPassword.Location = new System.Drawing.Point(65, 218);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
             this.TxtPassword.Size = new System.Drawing.Size(150, 20);
             this.TxtPassword.TabIndex = 4;
             // 
-            // button1
+            // BtnStartStop
             // 
-            this.button1.Location = new System.Drawing.Point(10, 298);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 23);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.BtnStartStop_Click);
+            this.BtnStartStop.Location = new System.Drawing.Point(10, 298);
+            this.BtnStartStop.Name = "BtnStartStop";
+            this.BtnStartStop.Size = new System.Drawing.Size(112, 23);
+            this.BtnStartStop.TabIndex = 11;
+            this.BtnStartStop.Text = "Start";
+            this.BtnStartStop.UseVisualStyleBackColor = true;
+            this.BtnStartStop.Click += new System.EventHandler(this.BtnStartStop_Click);
             // 
             // chkAdvanced
             // 
@@ -204,15 +206,15 @@
             this.ChkHideShell.UseVisualStyleBackColor = true;
             this.ChkHideShell.CheckedChanged += new System.EventHandler(this.ChkHideShell_CheckedChanged);
             // 
-            // label8
+            // LblHideShell
             // 
-            this.label8.AutoSize = true;
-            this.label8.Enabled = false;
-            this.label8.Location = new System.Drawing.Point(137, 262);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 13);
-            this.label8.TabIndex = 17;
-            this.label8.Text = "Hide Shell";
+            this.LblHideShell.AutoSize = true;
+            this.LblHideShell.Enabled = false;
+            this.LblHideShell.Location = new System.Drawing.Point(137, 262);
+            this.LblHideShell.Name = "LblHideShell";
+            this.LblHideShell.Size = new System.Drawing.Size(55, 13);
+            this.LblHideShell.TabIndex = 17;
+            this.LblHideShell.Text = "Hide Shell";
             // 
             // label9
             // 
@@ -242,16 +244,16 @@
             this.BtnUpdate.UseVisualStyleBackColor = true;
             this.BtnUpdate.Click += new System.EventHandler(this.BtnUpdate_Click);
             // 
-            // pictureBox1
+            // PicProxyGUI
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pictureBox1.Image = global::ProxyGui.Properties.Resources.Gui_logo;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(227, 92);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 20;
-            this.pictureBox1.TabStop = false;
+            this.PicProxyGUI.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PicProxyGUI.Image = global::ProxyGui.Properties.Resources.Gui_logo;
+            this.PicProxyGUI.Location = new System.Drawing.Point(0, 0);
+            this.PicProxyGUI.Name = "PicProxyGUI";
+            this.PicProxyGUI.Size = new System.Drawing.Size(227, 92);
+            this.PicProxyGUI.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicProxyGUI.TabIndex = 20;
+            this.PicProxyGUI.TabStop = false;
             // 
             // VersionLbl
             // 
@@ -263,17 +265,17 @@
             this.VersionLbl.TabIndex = 21;
             this.VersionLbl.Text = "version";
             // 
-            // pictureBox2
+            // PicImproved
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::ProxyGui.Properties.Resources.kai_fun_stuff;
-            this.pictureBox2.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(68, 48);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 22;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
+            this.PicImproved.BackColor = System.Drawing.Color.Transparent;
+            this.PicImproved.Image = global::ProxyGui.Properties.Resources.kai_fun_stuff;
+            this.PicImproved.Location = new System.Drawing.Point(0, 0);
+            this.PicImproved.Name = "PicImproved";
+            this.PicImproved.Size = new System.Drawing.Size(68, 48);
+            this.PicImproved.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PicImproved.TabIndex = 22;
+            this.PicImproved.TabStop = false;
+            this.PicImproved.Visible = false;
             // 
             // UsrModeLbl
             // 
@@ -298,6 +300,7 @@
             // chkCompress
             // 
             this.chkCompress.AutoSize = true;
+            this.chkCompress.Enabled = false;
             this.chkCompress.Location = new System.Drawing.Point(198, 279);
             this.chkCompress.Name = "chkCompress";
             this.chkCompress.Size = new System.Drawing.Size(15, 14);
@@ -308,6 +311,7 @@
             // Compress
             // 
             this.Compress.AutoSize = true;
+            this.Compress.Enabled = false;
             this.Compress.Location = new System.Drawing.Point(137, 279);
             this.Compress.Name = "Compress";
             this.Compress.Size = new System.Drawing.Size(53, 13);
@@ -345,19 +349,19 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.chkUseKey);
             this.Controls.Add(this.UsrModeLbl);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.PicImproved);
             this.Controls.Add(this.VersionLbl);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.PicProxyGUI);
             this.Controls.Add(this.BtnUpdate);
             this.Controls.Add(this.ChkHideShell);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.LblHideShell);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.ChkSaveKey);
             this.Controls.Add(this.ChkVerbose);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.chkAdvanced);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnStartStop);
             this.Controls.Add(this.LblPWorKEY);
             this.Controls.Add(this.TxtPassword);
             this.Controls.Add(this.label4);
@@ -379,8 +383,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.Resize += new System.EventHandler(this.Form1_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicProxyGUI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicImproved)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -398,19 +402,19 @@
         private System.Windows.Forms.TextBox TxtUserName;
         private System.Windows.Forms.Label LblPWorKEY;
         private System.Windows.Forms.TextBox TxtPassword;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnStartStop;
         private System.Windows.Forms.CheckBox chkAdvanced;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox ChkVerbose;
         private System.Windows.Forms.CheckBox ChkHideShell;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label LblHideShell;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.CheckBox ChkSaveKey;
         private System.Windows.Forms.Button BtnUpdate;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox PicProxyGUI;
         private System.Windows.Forms.Label VersionLbl;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox PicImproved;
         private System.Windows.Forms.Label UsrModeLbl;
         private System.Windows.Forms.NotifyIcon TrayIcon;
         private System.Windows.Forms.CheckBox chkCompress;

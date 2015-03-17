@@ -23,9 +23,9 @@ using System.Diagnostics;
  * 
  * 10-mar-15 | james | added high bandwidth server option, cleaning code, new form to select servers and testing characters in version
  * 
- * 16-mar-15 | james | ...
+ * 16-mar-15 | james | foundationing compression etc
  * 
- * 
+ * 17-mar-15 | james | security fixes, insert to bypass
  * 
  * 
  * 
@@ -47,22 +47,16 @@ namespace ProxyGui
     public partial class FrmMain : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        public string version = "113"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        public string version = "114"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-
+        public string usrmode = "user";
         Proxy _prox;
         public FrmMain()
         {
             InitializeComponent();
-            //        string path = "ProxyLib.dll";
-            //    if (!File.Exists(path))
-            //           System.IO.File.WriteAllBytes(path, ProxyGui.Properties.Resources.ProxyLib);
-            //     
-            //        if (!File.Exists("MagiCorpUpdater.exe"))
-            //            System.IO.File.WriteAllBytes("MagiCorpUpdater.exe", ProxyGui.Properties.Resources.MagiCorpUpdater);
 
             //parenting pictureboxes together
-            pictureBox1.Controls.Add(pictureBox2);
+            PicProxyGUI.Controls.Add(PicImproved);
 
 
             this.Text = "Disconnected";
@@ -108,11 +102,11 @@ namespace ProxyGui
                 _prox.SessionTerminated += _prox_SessionTerminated;
                 _prox.Start();
                 this.Text = "Connecting";
-                button1.Text = "Stop";
+                BtnStartStop.Text = "Stop";
             }
             else if (((Button)sender).Text == "Stop")
             {
-                button1.Text = "Closing";
+                BtnStartStop.Text = "Closing";
                 this.Text = "Disconnecting";
                 _prox.Stop();
 
@@ -127,13 +121,32 @@ namespace ProxyGui
         void _prox_SessionTerminated(object source, ProxyInfo e)
         {
             SetControlPropertyThreadSafe(this, "Text", "Disconnected");
-            SetControlPropertyThreadSafe(button1, "Text", "Start");
+            SetControlPropertyThreadSafe(BtnStartStop, "Text", "Start");
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                BtnStartStop_Click(button1, new EventArgs());
+                BtnStartStop_Click(BtnStartStop, new EventArgs());
+            else if (e.KeyCode == Keys.Insert)
+            {
+
+                DialogResult SecurityWarning = MessageBox.Show("By clicking OK you accept that anyone may be able to see your password. Do not use this on a public machine where administrators can see the programs you're running.", "WARNING", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                if (SecurityWarning == DialogResult.OK)
+                {
+                    TxtPassword.Enabled = true;
+                    LblPWorKEY.Enabled = true;
+                    ChkHideShell.Enabled = true;
+                    LblHideShell.Enabled = true;
+                }
+                else
+                {
+                    TxtPassword.Enabled = false;
+                    LblPWorKEY.Enabled = false;
+                    ChkHideShell.Enabled = false;
+                    LblHideShell.Enabled = false;
+                }
+            }
         }
 
         private delegate void SetControlPropertyThreadSafeDelegate(Control control, string propertyName, object propertyValue);
@@ -165,9 +178,9 @@ namespace ProxyGui
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (button1.Text == "Stop")
+            if (BtnStartStop.Text == "Stop")
             {
-                button1.Text = "Closing";
+                BtnStartStop.Text = "Closing";
                 this.Text = "Disconnecting";
                 _prox.Stop();
 
@@ -185,30 +198,31 @@ namespace ProxyGui
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             //Version label
             VersionLbl.Text = version;
 
             //Kai'sDemise
-
             string[] DevUsr = new string[] { "james", "rhys" };
             string[] DebugUsr = new string[] { "kai" };
 
             if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(DevUsr, StringSplitOptions.None).Length > 1)
             {
 
-                pictureBox2.Visible = true;
+                PicImproved.Visible = true;
+                usrmode = "dev";
                 UsrModeLbl.Text = "Developer Mode";
             }
             else if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(DebugUsr, StringSplitOptions.None).Length > 1)
             {
                 MessageBox.Show("HI KAI");
-                pictureBox2.Visible = true;
-                pictureBox2.Image = Properties.Resources.kai_fun_stuff;  //set this to kais special ver
+                PicImproved.Visible = true;
+                PicImproved.Image = Properties.Resources.kai_fun_stuff;  //set this to kais special ver
+                usrmode = "debug";
                 UsrModeLbl.Text = "Debug Mode";
             }
             else
             {
+                usrmode = "user";
                 UsrModeLbl.Text = "User Mode";
             }
             //MessageBox.Show(System.Security.Principal.WindowsIdentity.GetCurrent().Name);
@@ -256,11 +270,16 @@ namespace ProxyGui
 
         private void BtnUpdate_Click(object sender, EventArgs e)
         {
-            //  Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
-
-            FrmServerSelect SelectServer = new FrmServerSelect();
-            SelectServer.Show();
-            //     this.Hide();
+            if (usrmode == "dev" | usrmode == "debug")
+            {
+                FrmServerSelect SelectServer = new FrmServerSelect();
+                SelectServer.Show();
+            }
+            else
+            {
+                Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
+                Environment.Exit(1);
+            }
         }
 
 
@@ -330,7 +349,7 @@ namespace ProxyGui
 
         private void chkCompress_CheckedChanged(object sender, EventArgs e)
         {
-
+            //add -C switch to klink
         }
 
 

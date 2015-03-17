@@ -81,9 +81,20 @@ namespace ProxyGui
 
         private void Save()
         {
-          //  Properties.Settings.Default.Serv_URL = LstServerSelect.SelectedItem.ToString();
-            Properties.Settings.Default.Serv_DontShow = ChkDontShow.Checked;
-            Properties.Settings.Default.Serv_Remember = ChkRemember.Checked;
+            try
+            {
+                Properties.Settings.Default.Serv_URL = LstServerSelect.SelectedItem.ToString();
+
+                Properties.Settings.Default.Serv_DontShow = ChkDontShow.Checked;
+                Properties.Settings.Default.Serv_Remember = ChkRemember.Checked;
+            }
+            catch (Exception er)
+            {
+                MessageBox.Show(er.Message);
+
+            }
+
+
         }
 
         private void LoadSettings()
@@ -116,16 +127,16 @@ namespace ProxyGui
             Environment.Exit(1);
             this.Close();
 
-      /*      try
-            {
-                foreach (Process Killme in Process.GetProcessesByName("ProxyGUI"))
-                    Killme.Kill();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            */
+            /*      try
+                  {
+                      foreach (Process Killme in Process.GetProcessesByName("ProxyGUI"))
+                          Killme.Kill();
+                  }
+                  catch (Exception ex)
+                  {
+                      Console.WriteLine(ex.Message);
+                  }
+                  */
         }
 
 

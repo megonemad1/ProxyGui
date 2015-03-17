@@ -42,7 +42,7 @@
             // 
             this.LstServerSelect.FormattingEnabled = true;
             this.LstServerSelect.Items.AddRange(new object[] {
-            "http://178.62.10.81:8080",
+            "http://rhys.rklyne.net",
             "http://magicorpltd.co.uk",
             "http://magicorp.comuv.com"});
             this.LstServerSelect.Location = new System.Drawing.Point(12, 12);
@@ -54,13 +54,13 @@
             // ChkRemember
             // 
             this.ChkRemember.AutoSize = true;
+            this.ChkRemember.Enabled = false;
             this.ChkRemember.Location = new System.Drawing.Point(12, 61);
             this.ChkRemember.Name = "ChkRemember";
             this.ChkRemember.Size = new System.Drawing.Size(131, 17);
             this.ChkRemember.TabIndex = 1;
             this.ChkRemember.Text = "Remember my choice ";
             this.ChkRemember.UseVisualStyleBackColor = true;
-            this.ChkRemember.Visible = false;
             this.ChkRemember.CheckedChanged += new System.EventHandler(this.ChkRemember_CheckedChanged);
             // 
             // BtnProceed
@@ -76,6 +76,7 @@
             // ChkDontShow
             // 
             this.ChkDontShow.AutoSize = true;
+            this.ChkDontShow.Enabled = false;
             this.ChkDontShow.Location = new System.Drawing.Point(176, 61);
             this.ChkDontShow.Name = "ChkDontShow";
             this.ChkDontShow.Size = new System.Drawing.Size(127, 17);
@@ -97,6 +98,7 @@
             // LblServer1Active
             // 
             this.LblServer1Active.AutoSize = true;
+            this.LblServer1Active.Enabled = false;
             this.LblServer1Active.Location = new System.Drawing.Point(273, 12);
             this.LblServer1Active.Name = "LblServer1Active";
             this.LblServer1Active.Size = new System.Drawing.Size(27, 13);
@@ -106,6 +108,7 @@
             // LblServer2Active
             // 
             this.LblServer2Active.AutoSize = true;
+            this.LblServer2Active.Enabled = false;
             this.LblServer2Active.Location = new System.Drawing.Point(273, 25);
             this.LblServer2Active.Name = "LblServer2Active";
             this.LblServer2Active.Size = new System.Drawing.Size(27, 13);
@@ -115,6 +118,7 @@
             // LblServer3Active
             // 
             this.LblServer3Active.AutoSize = true;
+            this.LblServer3Active.Enabled = false;
             this.LblServer3Active.Location = new System.Drawing.Point(273, 38);
             this.LblServer3Active.Name = "LblServer3Active";
             this.LblServer3Active.Size = new System.Drawing.Size(27, 13);
