@@ -170,6 +170,7 @@ namespace ProxyLib
                 System.IO.File.WriteAllBytes(path, Properties.Resources.klink);
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = path;
+            //-c for compression
             startInfo.Arguments = string.Format("-ssh -l {0} -pw {1} -D {2} -P {3} {4} {5} {6} {7}", username, password, this.Cientport, this.Serverport, (verbose) ? "-v" : "", (auto_store_sshkey) ? "-auto_store_sshkey" : "", (NoShell) ? "-N" : "", host);
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = NoShell;
@@ -198,7 +199,7 @@ namespace ProxyLib
             }
             catch (Exception e)
             {
-                Console.WriteLine("[Runtime]" + e.Message);
+                Console.WriteLine("[Runtime Error]" + e.Message);
             }
 
             _open = false;
