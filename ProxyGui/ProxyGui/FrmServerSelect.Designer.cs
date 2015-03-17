@@ -41,10 +41,6 @@
             // LstServerSelect
             // 
             this.LstServerSelect.FormattingEnabled = true;
-            this.LstServerSelect.Items.AddRange(new object[] {
-            "http://rhys.rklyne.net",
-            "http://magicorpltd.co.uk",
-            "http://magicorp.comuv.com"});
             this.LstServerSelect.Location = new System.Drawing.Point(12, 12);
             this.LstServerSelect.Name = "LstServerSelect";
             this.LstServerSelect.Size = new System.Drawing.Size(255, 43);

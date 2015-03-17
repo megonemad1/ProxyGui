@@ -51,7 +51,7 @@ namespace ProxyGui
         private void FrmServerSelect_Load(object sender, EventArgs e)
         {
             LoadSettings();
-
+            PullFromWeb();
             //check if we should show based on chkdontshow
             if (ChkDontShow.Checked)
             {
@@ -60,6 +60,19 @@ namespace ProxyGui
 
             Pingaling();
 
+        }
+
+        private void PullFromWeb()
+        {
+            WebClient UpdateClient = new WebClient();
+            string Servers = UpdateClient.DownloadString("http://rhys.rklyne.net/Updater/ProxyGUI/" + "servers.mup");
+            string[] parts = Servers.Split(',');
+
+            foreach (string part in parts)
+            {
+                Console.WriteLine(part);
+                LstServerSelect.Items.Add(part);
+            }
         }
 
         private void Pingaling()

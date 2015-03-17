@@ -174,9 +174,12 @@ namespace ProxyLib
             //tempfix for blankpwcrash
             if (password == "")
             {
-                password = "null&void";
+                startInfo.Arguments = string.Format("-ssh -l {0} -D {2} -P {3} {4} {5} {6} {7}", username, password, this.Cientport, this.Serverport, (verbose) ? "-v" : "", (auto_store_sshkey) ? "-auto_store_sshkey" : "", (NoShell) ? "-N" : "", host);
             }
-            startInfo.Arguments = string.Format("-ssh -l {0} -pw {1} -D {2} -P {3} {4} {5} {6} {7}", username, password, this.Cientport, this.Serverport, (verbose) ? "-v" : "", (auto_store_sshkey) ? "-auto_store_sshkey" : "", (NoShell) ? "-N" : "", host);
+            else
+            {
+                startInfo.Arguments = string.Format("-ssh -l {0} -pw {1} -D {2} -P {3} {4} {5} {6} {7}", username, password, this.Cientport, this.Serverport, (verbose) ? "-v" : "", (auto_store_sshkey) ? "-auto_store_sshkey" : "", (NoShell) ? "-N" : "", host);
+            }
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = NoShell;
             Ssh = new Process();

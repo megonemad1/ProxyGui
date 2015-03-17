@@ -11,7 +11,8 @@ using ProxyLib;
 using System.IO;
 using System.Reflection;
 using System.Diagnostics;
-
+using System.Net;
+using System.Net.Configuration;
 
 
 /*          CHANGE  LOG   
@@ -26,6 +27,7 @@ using System.Diagnostics;
  * 16-mar-15 | james | foundationing compression etc
  * 
  * 17-mar-15 | james | security fixes, insert to bypass, password fix
+ * 17-mar-15 | james | now pulls update servers from the web, auto checks for update on startup (green if up to date, blue if unknown, red if out of date)
  * 
  * 
  * 
@@ -35,9 +37,9 @@ using System.Diagnostics;
  *Maybe force user to input pw into klink? safer than -pw 
  *-C compression option
  *-i hashkey to login 
- * Poll server for authed logins <encrypted as bin?>
+ *Poll server for authed logins <encrypted as bin?>
  *Setup ping on serv selection
- * 
+ *Pull servers from the web 
  * 
  * */
 
@@ -47,9 +49,12 @@ namespace ProxyGui
     public partial class FrmMain : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        public string version = "115"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        public string version = "116"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
+
         public string usrmode = "user";
+
+
         Proxy _prox;
         public FrmMain()
         {
@@ -98,7 +103,7 @@ namespace ProxyGui
                     _prox.setCientport(TxtCientPort.Text).setServerport(TxtHostPort.Text);
                 else
                     _prox.setCientport("8080").setServerport("22");
-                
+
                 //this is broke somehow
                 _prox.sethost(TxtHostName.Text).TurnOffShell(ChkHideShell.Checked).AutoStoreSshkey(ChkSaveKey.Checked).setpassword(TxtPassword.Text).sethost(TxtHostName.Text).setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
                 //or in proxy.cs
@@ -204,6 +209,31 @@ namespace ProxyGui
         {
             //Version label
             VersionLbl.Text = version;
+            VersionLbl.ForeColor = Color.Blue;
+
+            try
+            {
+                WebClient UpdateClient = new WebClient();
+                string webver = UpdateClient.DownloadString("http://rhys.rklyne.net/Updater/ProxyGUI/" + "version.mup");
+
+                if (Convert.ToInt32(webver) > Convert.ToInt32(version))
+                {
+                    VersionLbl.ForeColor = Color.Red;
+                    MessageBox.Show("Update is available.");
+                }
+                else
+                {
+                    VersionLbl.ForeColor = Color.Green;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
+
 
             //Kai'sDemise
             string[] DevUsr = new string[] { "james", "rhys" };
@@ -218,7 +248,7 @@ namespace ProxyGui
             }
             else if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(DebugUsr, StringSplitOptions.None).Length > 1)
             {
-                MessageBox.Show("HI KAI");
+                // MessageBox.Show("HI KAI");
                 PicImproved.Visible = true;
                 PicImproved.Image = Properties.Resources.kai_fun_stuff;  //set this to kais special ver
                 usrmode = "debug";
