@@ -15,7 +15,18 @@ using System.Net;
 using System.Net.Configuration;
 
 
-/*          CHANGE  LOG   
+/* 
+ *  ____                               ____    __  __  ______     
+ * /\  _`\                            /\  _`\ /\ \/\ \/\__  _\    
+ * \ \ \L\ \_ __   ___   __  _  __  __\ \ \L\_\ \ \ \ \/_/\ \/    
+ *  \ \ ,__/\`'__\/ __`\/\ \/'\/\ \/\ \\ \ \L_L\ \ \ \ \ \ \ \    
+ *   \ \ \/\ \ \//\ \L\ \/>  </\ \ \_\ \\ \ \/, \ \ \_\ \ \_\ \__ 
+ *    \ \_\ \ \_\\ \____//\_/\_\\/`____ \\ \____/\ \_____\/\_____\
+ *     \/_/  \/_/ \/___/ \//\/_/ `/___/> \\/___/  \/_____/\/_____/
+ *                                  /\___/                        
+ *                                  \/__/   By Rhys P with modifications by James W                    
+ *  
+ *          CHANGE  LOG   
  *   date    | user  | changelog
  *   --------------------------
  * 09-mar-15 | james | kais demise, versioning, magicorp update, write libs on boot, update form layout, combine to master on gh
@@ -28,18 +39,24 @@ using System.Net.Configuration;
  * 
  * 17-mar-15 | james | security fixes, insert to bypass, password fix
  * 17-mar-15 | james | now pulls update servers from the web, auto checks for update on startup (green if up to date, blue if unknown, red if out of date)
- * 
+ * 17-mar-15 | james | force update feature (probably only useful for testing but whatever), foundations for a settings button & form
+ * 17-mar-15 | rhys | started proxylib rewrite (security fixes)
  * 
  * 
  * 
  *             TO  DO
- *URGENT: setup ssh keys
- *Maybe force user to input pw into klink? safer than -pw 
+ *URGENT: PW FIXES
+ *Maybe force user to input pw into klink? safer than -pw [applied as tempfix by james]
+ *SSH keys
  *-C compression option
  *-i hashkey to login 
  *Poll server for authed logins <encrypted as bin?>
  *Setup ping on serv selection
  *Pull servers from the web 
+ *inapp changelog
+ *
+ * 
+ * 
  * 
  * */
 
@@ -49,7 +66,7 @@ namespace ProxyGui
     public partial class FrmMain : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        public string version = "116"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        public string version = "118"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
 
         public string usrmode = "user";
@@ -103,11 +120,7 @@ namespace ProxyGui
                     _prox.setCientport(TxtCientPort.Text).setServerport(TxtHostPort.Text);
                 else
                     _prox.setCientport("8080").setServerport("22");
-
-                //this is broke somehow
                 _prox.sethost(TxtHostName.Text).TurnOffShell(ChkHideShell.Checked).AutoStoreSshkey(ChkSaveKey.Checked).setpassword(TxtPassword.Text).sethost(TxtHostName.Text).setusername(TxtUserName.Text).Verbose(ChkVerbose.Checked);
-                //or in proxy.cs
-
                 _prox.SessionTerminated += _prox_SessionTerminated;
                 _prox.Start();
                 this.Text = "Connecting";
@@ -140,7 +153,7 @@ namespace ProxyGui
             else if (e.KeyCode == Keys.Insert)
             {
 
-                DialogResult SecurityWarning = MessageBox.Show("By clicking OK you accept that anyone may be able to see your password. Do not use this on a public machine where administrators can see the programs you're running.", "WARNING", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
+                DialogResult SecurityWarning = MessageBox.Show("By clicking OK you accept that anyone may be able to see your password. Do not use this on a public machine where administrators can see the programs you're running.", "SECURITY WARNING", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation);
                 if (SecurityWarning == DialogResult.OK)
                 {
                     TxtPassword.Enabled = true;
@@ -241,7 +254,6 @@ namespace ProxyGui
 
             if (System.Security.Principal.WindowsIdentity.GetCurrent().Name.ToLower().Split(DevUsr, StringSplitOptions.None).Length > 1)
             {
-
                 PicImproved.Visible = true;
                 usrmode = "dev";
                 UsrModeLbl.Text = "Developer Mode";

@@ -59,6 +59,7 @@
             this.Compress = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.chkUseKey = new System.Windows.Forms.CheckBox();
+            this.BtnSettings = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicProxyGUI)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PicImproved)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +90,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 116);
+            this.label1.Location = new System.Drawing.Point(5, 116);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 3;
@@ -98,7 +99,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 142);
+            this.label2.Location = new System.Drawing.Point(7, 142);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 4;
@@ -107,7 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 168);
+            this.label3.Location = new System.Drawing.Point(5, 168);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 5;
@@ -116,7 +117,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1, 195);
+            this.label4.Location = new System.Drawing.Point(5, 194);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 7;
@@ -124,7 +125,7 @@
             // 
             // TxtUserName
             // 
-            this.TxtUserName.Location = new System.Drawing.Point(65, 192);
+            this.TxtUserName.Location = new System.Drawing.Point(65, 191);
             this.TxtUserName.Name = "TxtUserName";
             this.TxtUserName.Size = new System.Drawing.Size(150, 20);
             this.TxtUserName.TabIndex = 3;
@@ -133,7 +134,7 @@
             // 
             this.LblPWorKEY.AutoSize = true;
             this.LblPWorKEY.Enabled = false;
-            this.LblPWorKEY.Location = new System.Drawing.Point(6, 221);
+            this.LblPWorKEY.Location = new System.Drawing.Point(6, 220);
             this.LblPWorKEY.Name = "LblPWorKEY";
             this.LblPWorKEY.Size = new System.Drawing.Size(56, 13);
             this.LblPWorKEY.TabIndex = 9;
@@ -142,7 +143,7 @@
             // TxtPassword
             // 
             this.TxtPassword.Enabled = false;
-            this.TxtPassword.Location = new System.Drawing.Point(65, 218);
+            this.TxtPassword.Location = new System.Drawing.Point(65, 217);
             this.TxtPassword.Name = "TxtPassword";
             this.TxtPassword.PasswordChar = '*';
             this.TxtPassword.Size = new System.Drawing.Size(150, 20);
@@ -152,7 +153,7 @@
             // 
             this.button1.Location = new System.Drawing.Point(10, 298);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 23);
+            this.button1.Size = new System.Drawing.Size(79, 23);
             this.button1.TabIndex = 11;
             this.button1.Text = "Start";
             this.button1.UseVisualStyleBackColor = true;
@@ -171,7 +172,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 244);
+            this.label6.Location = new System.Drawing.Point(7, 244);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 12;
@@ -180,7 +181,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(137, 244);
+            this.label7.Location = new System.Drawing.Point(140, 244);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(46, 13);
             this.label7.TabIndex = 13;
@@ -199,7 +200,7 @@
             // 
             this.ChkHideShell.AutoSize = true;
             this.ChkHideShell.Enabled = false;
-            this.ChkHideShell.Location = new System.Drawing.Point(198, 262);
+            this.ChkHideShell.Location = new System.Drawing.Point(198, 261);
             this.ChkHideShell.Name = "ChkHideShell";
             this.ChkHideShell.Size = new System.Drawing.Size(15, 14);
             this.ChkHideShell.TabIndex = 8;
@@ -210,7 +211,7 @@
             // 
             this.LblHideShell.AutoSize = true;
             this.LblHideShell.Enabled = false;
-            this.LblHideShell.Location = new System.Drawing.Point(137, 262);
+            this.LblHideShell.Location = new System.Drawing.Point(136, 261);
             this.LblHideShell.Name = "LblHideShell";
             this.LblHideShell.Size = new System.Drawing.Size(55, 13);
             this.LblHideShell.TabIndex = 17;
@@ -219,7 +220,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 261);
+            this.label9.Location = new System.Drawing.Point(9, 261);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 13);
             this.label9.TabIndex = 16;
@@ -228,7 +229,7 @@
             // ChkSaveKey
             // 
             this.ChkSaveKey.AutoSize = true;
-            this.ChkSaveKey.Location = new System.Drawing.Point(74, 262);
+            this.ChkSaveKey.Location = new System.Drawing.Point(74, 261);
             this.ChkSaveKey.Name = "ChkSaveKey";
             this.ChkSaveKey.Size = new System.Drawing.Size(15, 14);
             this.ChkSaveKey.TabIndex = 7;
@@ -236,9 +237,9 @@
             // 
             // BtnUpdate
             // 
-            this.BtnUpdate.Location = new System.Drawing.Point(128, 298);
+            this.BtnUpdate.Location = new System.Drawing.Point(136, 298);
             this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(87, 23);
+            this.BtnUpdate.Size = new System.Drawing.Size(79, 23);
             this.BtnUpdate.TabIndex = 12;
             this.BtnUpdate.Text = "Update";
             this.BtnUpdate.UseVisualStyleBackColor = true;
@@ -301,7 +302,7 @@
             // 
             this.chkCompress.AutoSize = true;
             this.chkCompress.Enabled = false;
-            this.chkCompress.Location = new System.Drawing.Point(198, 279);
+            this.chkCompress.Location = new System.Drawing.Point(198, 278);
             this.chkCompress.Name = "chkCompress";
             this.chkCompress.Size = new System.Drawing.Size(15, 14);
             this.chkCompress.TabIndex = 10;
@@ -312,7 +313,7 @@
             // 
             this.Compress.AutoSize = true;
             this.Compress.Enabled = false;
-            this.Compress.Location = new System.Drawing.Point(137, 279);
+            this.Compress.Location = new System.Drawing.Point(137, 278);
             this.Compress.Name = "Compress";
             this.Compress.Size = new System.Drawing.Size(53, 13);
             this.Compress.TabIndex = 26;
@@ -332,18 +333,28 @@
             // 
             this.chkUseKey.AutoSize = true;
             this.chkUseKey.Enabled = false;
-            this.chkUseKey.Location = new System.Drawing.Point(74, 279);
+            this.chkUseKey.Location = new System.Drawing.Point(74, 278);
             this.chkUseKey.Name = "chkUseKey";
             this.chkUseKey.Size = new System.Drawing.Size(15, 14);
             this.chkUseKey.TabIndex = 9;
             this.chkUseKey.UseVisualStyleBackColor = true;
             this.chkUseKey.CheckedChanged += new System.EventHandler(this.chkUseKey_CheckedChanged);
             // 
+            // BtnSettings
+            // 
+            this.BtnSettings.Enabled = false;
+            this.BtnSettings.Location = new System.Drawing.Point(95, 298);
+            this.BtnSettings.Name = "BtnSettings";
+            this.BtnSettings.Size = new System.Drawing.Size(35, 23);
+            this.BtnSettings.TabIndex = 27;
+            this.BtnSettings.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(227, 341);
+            this.Controls.Add(this.BtnSettings);
             this.Controls.Add(this.chkCompress);
             this.Controls.Add(this.Compress);
             this.Controls.Add(this.label11);
@@ -421,6 +432,7 @@
         private System.Windows.Forms.Label Compress;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.CheckBox chkUseKey;
+        private System.Windows.Forms.Button BtnSettings;
     }
 }
 

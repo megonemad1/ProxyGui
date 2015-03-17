@@ -27,6 +27,11 @@ namespace ProxyGui
             MainLogic();
         }
 
+        private void BtnForceUpd_Click(object sender, EventArgs e)
+        {
+            MainLogic(true);
+        }
+
         private void BtnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -34,7 +39,7 @@ namespace ProxyGui
 
         private void LstServerSelect_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ServerURL = LstServerSelect.SelectedItem.ToString() + "/updater";
+            ServerURL = LstServerSelect.SelectedItem.ToString() + "/Updater";
             Save();
         }
 
@@ -53,43 +58,33 @@ namespace ProxyGui
             LoadSettings();
             PullFromWeb();
             //check if we should show based on chkdontshow
-            if (ChkDontShow.Checked)
-            {
-                MainLogic();
-            }
-
-            Pingaling();
+            ///       if (ChkDontShow.Checked)
+            //    {
+            //      MainLogic();
+            //}
 
         }
 
         private void PullFromWeb()
         {
-            WebClient UpdateClient = new WebClient();
-            string Servers = UpdateClient.DownloadString("http://rhys.rklyne.net/Updater/ProxyGUI/" + "servers.mup");
-            string[] parts = Servers.Split(',');
-
-            foreach (string part in parts)
+            try
             {
-                Console.WriteLine(part);
-                LstServerSelect.Items.Add(part);
+                WebClient UpdateClient = new WebClient();
+                string Servers = UpdateClient.DownloadString("http://rhys.rklyne.net/Updater/ProxyGUI/" + "servers.mup");
+                string[] parts = Servers.Split(',');
+
+                foreach (string part in parts)
+                {
+                    Console.WriteLine(part);
+                    LstServerSelect.Items.Add(part);
+                }
             }
-        }
+            catch (Exception X)
+            {
 
-        private void Pingaling()
-        {
-            Ping pingSender = new Ping();
-            //      PingReply reply = pingSender.Send(IPAddress "magicorpltd.co.uk", 400);
+                MessageBox.Show(X.Message);
+            }
 
-            //    if (reply.Status == IPStatus.Success)
-            //     {
-            //          LblServer1Active.Text = Convert.ToString(reply.RoundtripTime);
-            //      }
-            //      else
-            //       {
-            LblServer1Active.Text = "Offline";
-            LblServer2Active.Text = "Offline";
-            LblServer3Active.Text = "Offline";
-            //      }
         }
 
         private void Save()
@@ -103,7 +98,7 @@ namespace ProxyGui
             }
             catch (Exception er)
             {
-                MessageBox.Show(er.Message);
+                Console.WriteLine(er.Message);
 
             }
 
@@ -122,14 +117,18 @@ namespace ProxyGui
             }
         }
 
-        private void MainLogic()
+        private void MainLogic(bool force = false)
         {
 
             FrmMain MainFrm = new FrmMain();
 
             try
             {
-                Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + MainFrm.version + " -s:" + ServerURL);
+
+                string version = MainFrm.version;
+                if (force)
+                    version = "001";
+                Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:" + ServerURL);
             }
             catch (Exception err)
             {
