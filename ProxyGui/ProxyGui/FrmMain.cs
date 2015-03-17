@@ -25,7 +25,7 @@ using System.Diagnostics;
  * 
  * 16-mar-15 | james | foundationing compression etc
  * 
- * 17-mar-15 | james | security fixes, insert to bypass
+ * 17-mar-15 | james | security fixes, insert to bypass, password fix
  * 
  * 
  * 
@@ -47,7 +47,7 @@ namespace ProxyGui
     public partial class FrmMain : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        public string version = "114"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        public string version = "115"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
         public string usrmode = "user";
         Proxy _prox;
