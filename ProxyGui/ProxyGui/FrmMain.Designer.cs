@@ -348,6 +348,7 @@
             this.BtnSettings.Size = new System.Drawing.Size(35, 23);
             this.BtnSettings.TabIndex = 27;
             this.BtnSettings.UseVisualStyleBackColor = true;
+            this.BtnSettings.Click += new System.EventHandler(this.BtnSettings_Click);
             // 
             // FrmMain
             // 

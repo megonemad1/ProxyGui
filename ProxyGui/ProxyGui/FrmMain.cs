@@ -42,7 +42,7 @@ using System.Net.Configuration;
  * 17-mar-15 | james | force update feature (probably only useful for testing but whatever), foundations for a settings button & form
  * 17-mar-15 | rhys | started proxylib rewrite (security fixes)
  * 
- * 
+ * 29-mar-15 | james | fixed updating, prep for rhys dll rewrite
  * 
  *             TO  DO
  *URGENT: PW FIXES
@@ -52,7 +52,7 @@ using System.Net.Configuration;
  *-i hashkey to login 
  *Poll server for authed logins <encrypted as bin?>
  *Setup ping on serv selection
- *Pull servers from the web 
+ *Pull servers from the web [done]
  *inapp changelog
  *
  * 
@@ -66,7 +66,7 @@ namespace ProxyGui
     public partial class FrmMain : Form
     {
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
-        public string version = "118"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+        public string version = "119"; //Change me when you change something !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
         //!?!?!?!?!?!?!?!?!?!?!??!?!?!?!??!?!?!?!?!?!??!?!?!?!?
 
         public string usrmode = "user";
@@ -323,7 +323,7 @@ namespace ProxyGui
             }
             else
             {
-                Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/updater");
+                Process.Start("MagiCorpUpdater.exe", "-p:ProxyGUI -v:" + version + " -s:http://magicorpltd.co.uk/Updater");
                 Environment.Exit(1);
             }
         }
@@ -396,6 +396,11 @@ namespace ProxyGui
         private void chkCompress_CheckedChanged(object sender, EventArgs e)
         {
             //add -C switch to klink
+        }
+
+        private void BtnSettings_Click(object sender, EventArgs e)
+        {
+            //show settings form
         }
 
 
