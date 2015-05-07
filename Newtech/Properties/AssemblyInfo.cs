@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Proxy GUI")]
-[assembly: AssemblyDescription("GUI for PuTTY SSH tunneling")]
+[assembly: AssemblyTitle("Newtech")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Puddephat")]
-[assembly: AssemblyProduct("ProxyGui")]
-[assembly: AssemblyCopyright("Copyright © Puddephat 2015")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Newtech")]
+[assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("cdffc54d-d6b2-4850-86c1-2851566bd855")]
+[assembly: Guid("ea40ae71-1933-44f8-8d1e-3d20abd50a3c")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.1.5.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]

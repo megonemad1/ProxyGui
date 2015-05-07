@@ -118,5 +118,41 @@ namespace ProxyGui.Properties {
                 this["HiddenShell"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Serv_Remember {
+            get {
+                return ((bool)(this["Serv_Remember"]));
+            }
+            set {
+                this["Serv_Remember"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Serv_DontShow {
+            get {
+                return ((bool)(this["Serv_DontShow"]));
+            }
+            set {
+                this["Serv_DontShow"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Serv_URL {
+            get {
+                return ((string)(this["Serv_URL"]));
+            }
+            set {
+                this["Serv_URL"] = value;
+            }
+        }
     }
 }
