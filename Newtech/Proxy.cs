@@ -54,7 +54,7 @@ namespace Newtech
         /// </summary>
         public void Dispose()
         {
-            if (Check!=null &&Check.IsAlive)
+            if (Check != null && Check.IsAlive)
                 Check.Abort();
             if (ssh != null)
             {
@@ -142,7 +142,14 @@ namespace Newtech
         /// <returns>Amended object</returns>
         public Proxy setCientport(string h)
         {
-            Cientport = Convert.ToUInt32(h);
+            try
+            {
+                Cientport = Convert.ToUInt32(h);
+            }
+            catch (Exception e)
+            {
+                errors.Enqueue(e);
+            }
             return this;
         }
         /// <summary>
@@ -152,7 +159,14 @@ namespace Newtech
         /// <returns>Amended object</returns>
         public Proxy setServerport(string h)
         {
-            Serverport = Convert.ToInt32(h);
+            try
+            {
+                Serverport = Convert.ToInt32(h);
+            }
+            catch (Exception e)
+            {
+                errors.Enqueue(e);
+            }
             return this;
         }
 
@@ -170,7 +184,7 @@ namespace Newtech
         public void resetLan()
         {
             if (!Open)
-            ChangeLanProxySettings(0, OldSettings);
+                ChangeLanProxySettings(0, OldSettings);
         }
 
         private void ChangeLanProxySettings(int on, object proxsettings)
@@ -215,7 +229,7 @@ namespace Newtech
             }
 
             _open = false;
-            
+
             ChangeLanProxySettings(0, (this.OldSettings == null) ? "" : OldSettings);
             Console.WriteLine("[Runtime]Returned LAN Proxy");
 
